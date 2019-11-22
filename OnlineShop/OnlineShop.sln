@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Api", "OnlineSho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Dal", "OnlineShop.Dal\OnlineShop.Dal.csproj", "{AC00EEE7-A2A2-4355-A5C8-F39DA12BD940}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Bll", "OnlineShop.Bll\OnlineShop.Bll.csproj", "{7E043C96-40B5-412D-B8A9-2831C3BCEE03}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Models", "OnlineShop.Models\OnlineShop.Models.csproj", "{4BD16190-A223-48C4-886B-75BB8C725A1B}"
 EndProject
 Global
