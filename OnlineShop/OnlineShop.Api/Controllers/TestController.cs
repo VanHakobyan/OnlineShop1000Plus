@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Bll.Repositories;
 using OnlineShop.Dal;
-using OnlineShop.Dal.Repositories;
+using OnlineShop.Models;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -16,7 +17,7 @@ namespace OnlineShop.Api.Controllers
         //[HttpGet("users")]
         public IActionResult UsersList()
         {
-            IUserManagement user = new UserManagement();
+            IUserManagementBLL user = new UserManagementBLL();
             //Users x = new Users()
             //{
             //    Email = "sdklbhklugfdfkljbjklha",

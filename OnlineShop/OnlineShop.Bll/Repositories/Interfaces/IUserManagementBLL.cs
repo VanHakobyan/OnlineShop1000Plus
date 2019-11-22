@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using OnlineShop.Models;
 
-namespace OnlineShop.Dal.Repositories
+namespace OnlineShop.Bll.Repositories
 {
-    public interface IUserManagement
+    public interface IUserManagementBLL
     {
         //Create
         void AddUser(Users user);
@@ -12,11 +12,10 @@ namespace OnlineShop.Dal.Repositories
         IEnumerable<Users> AllUsers { get; }
         Users GetUserById(int id);
         Users GetUserByUsername(string username);
+        Users GetUserByEmail(string email);
 
         //Update
         void UpdateUser(Users entity);
-        Users GetUserByEmail(string email);
-
 
         //Delete
         void RemoveUser(Users user);

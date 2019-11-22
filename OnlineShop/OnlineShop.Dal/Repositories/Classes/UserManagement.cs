@@ -25,6 +25,10 @@ namespace OnlineShop.Dal.Repositories
         {
             return context.Users.FirstOrDefault(x => x.Username == username);
         }
+        public Users GetUserByEmail(string email)
+        {
+            return context.Users.FirstOrDefault(x => x.Email == email);
+        }
 
         //Update
         public void UpdateUser(Users entity)
