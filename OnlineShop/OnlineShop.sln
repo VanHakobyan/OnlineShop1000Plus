@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Api", "OnlineSho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Dal", "OnlineShop.Dal\OnlineShop.Dal.csproj", "{AC00EEE7-A2A2-4355-A5C8-F39DA12BD940}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Bll", "..\..\OnlineShop.Bll\OnlineShop.Bll\OnlineShop.Bll.csproj", "{118A7B12-7C20-4841-BD90-292413283548}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Bll", "OnlineShop.Bll1\OnlineShop.Bll.csproj", "{FD7D7592-8FB2-4ED4-A2D1-2343FD35BF4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AC00EEE7-A2A2-4355-A5C8-F39DA12BD940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC00EEE7-A2A2-4355-A5C8-F39DA12BD940}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC00EEE7-A2A2-4355-A5C8-F39DA12BD940}.Release|Any CPU.Build.0 = Release|Any CPU
-		{118A7B12-7C20-4841-BD90-292413283548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{118A7B12-7C20-4841-BD90-292413283548}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{118A7B12-7C20-4841-BD90-292413283548}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{118A7B12-7C20-4841-BD90-292413283548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD7D7592-8FB2-4ED4-A2D1-2343FD35BF4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD7D7592-8FB2-4ED4-A2D1-2343FD35BF4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD7D7592-8FB2-4ED4-A2D1-2343FD35BF4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD7D7592-8FB2-4ED4-A2D1-2343FD35BF4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
