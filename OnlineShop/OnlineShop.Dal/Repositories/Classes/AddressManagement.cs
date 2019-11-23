@@ -30,8 +30,11 @@ namespace OnlineShop.Dal.Repositories
 
         public void RemoveAddress(Addresses address)
         {
-            context.Addresses.Remove(address);
-            context.SaveChanges();
+            if (address.Users.Count == 0)
+            {
+                context.Addresses.Remove(address);
+                context.SaveChanges();
+            }
         }
 
         public void UpdateAddress(Addresses entity)

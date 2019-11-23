@@ -27,6 +27,7 @@ namespace OnlineShop.Bll.Repositories
 
         public void RemoveAddress(Addresses address)
         {
+
             _addressDAL.RemoveAddress(address);
         }
 

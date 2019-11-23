@@ -33,19 +33,7 @@ namespace OnlineShop.Dal.Repositories
         //Update
         public void UpdateUser(Users entity)
         {
-            var users = GetUserById(entity.Id);
-
-            users.Id = entity.Id;
-            users.Username = entity.Username;
-            users.FirstName = entity.FirstName;
-            users.LastName = entity.LastName;
-            users.Email = entity.Email;
-            users.Address = entity.Address;
-            users.AddressId = entity.AddressId;
-            users.Orders = entity.Orders;
-            users.Password = entity.Password;
-            users.RegistrationDate = entity.RegistrationDate;
-
+            context.Users.Update(entity);
             context.SaveChanges();
         }
 
