@@ -13,6 +13,8 @@ namespace OnlineShop.Bll.Repositories
         Users GetUserById(int id);
         Users GetUserByUsername(string username);
         Users GetUserByEmail(string email);
+        bool SearForEmail(string email);
+        bool SearchForUsername(string username);
 
         //Update
         void UpdateUser(Users entity);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using OnlineShop.Api.Services.Interfaces;
+using OnlineShop.Models;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -19,17 +20,18 @@ namespace OnlineShop.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]string email, string password)
+        [HttpPost]
+        public IActionResult Authenticate([FromBody]AuthenticateModel model)
         {
-            var user = _usersService.Authenticate(email, password);
+            var user = _usersService.Authenticate(model.Email, model.Password);
             return Ok(user);
         }
 
-        [HttpPost("authorize")]
-        public IActionResult Authorize([FromBody]string username, string email, string firstName, string lastName, string password, string confirmPassword)
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult Authorize([FromBody]AuthorizeModel model)
         {
-            var user = _usersService.Authorize(email, password, username, firstName, lastName, confirmPassword);
+            var user = _usersService.Authorize(model.Email, model.Username, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
             return Ok(user);
         }
     }

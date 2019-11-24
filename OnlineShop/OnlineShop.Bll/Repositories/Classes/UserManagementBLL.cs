@@ -30,6 +30,15 @@ namespace OnlineShop.Bll.Repositories
             return _userManagementDAL.GetUserByUsername(username);
         }
 
+        public bool SearForEmail(string email)
+        {
+            return _userManagementDAL.SearForEmail(email);
+        }
+        public bool SearchForUsername(string username)
+        {
+            return _userManagementDAL.SearchForUsername(username);
+        }
+
         public void RemoveUser(Users user)
         {
             _userManagementDAL.RemoveUser(user);

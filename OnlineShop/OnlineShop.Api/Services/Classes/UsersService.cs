@@ -62,10 +62,10 @@ namespace OnlineShop.Api.Services.Classes
                 throw new AppExceptions("Password not confirmed");
 
             // email validation
-            if (string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(email) )
                 throw new AppExceptions("Email is required");
 
-            if (_userManagementBLL.GetUserByEmail(email).Email == email)
+            if (!_userManagementBLL.SearForEmail(email))
                 throw new AppExceptions($"Email \"{email}\" is already taken");
 
             if (!EmailValidation.IsValidEmail(email))
@@ -75,7 +75,7 @@ namespace OnlineShop.Api.Services.Classes
             if (string.IsNullOrWhiteSpace(username))
                 throw new AppExceptions("Username is required");
 
-            if (_userManagementBLL.GetUserByUsername(username).Username == username)
+            if (_userManagementBLL.SearchForUsername(username))
                 throw new AppExceptions($"Username \"{username}\" is already taken");
 
             // first name & last name validation

@@ -30,6 +30,18 @@ namespace OnlineShop.Dal.Repositories
             return context.Users.FirstOrDefault(x => x.Email == email);
         }
 
+        public bool SearForEmail(string email)
+        {
+            if (context.Users.Any(x => x.Email == email)) return true;
+            return false;
+        }
+
+        public bool SearchForUsername(string username)
+        {
+            if (context.Users.Any(x => x.Username == username)) return true;
+            return false;
+        }
+
         //Update
         public void UpdateUser(Users entity)
         {

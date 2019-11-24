@@ -12,6 +12,8 @@ namespace OnlineShop.Dal.Repositories
         IEnumerable<Users> AllUsers { get; }
         Users GetUserById(int id);
         Users GetUserByUsername(string username);
+        bool SearForEmail(string email);
+        bool SearchForUsername(string username);
 
         //Update
         void UpdateUser(Users entity);

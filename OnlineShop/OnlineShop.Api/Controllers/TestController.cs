@@ -19,7 +19,7 @@ namespace OnlineShop.Api.Controllers
             return Ok($"Test {DateTime.UtcNow}");
         }
 
-        //[HttpGet("users")]
+        [HttpGet]
         public IActionResult UserByEmail([FromBody]string email)
         {
             _userManagementBLL.GetUserByEmail(email);
