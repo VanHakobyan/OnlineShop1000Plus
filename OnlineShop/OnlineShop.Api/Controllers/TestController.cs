@@ -8,6 +8,11 @@ namespace OnlineShop.Api.Controllers
 {
     public class TestController : CustomBaseController
     {
+        private readonly IUserManagementBLL _userManagementBLL;
+        public TestController(IUserManagementBLL userManagementBLL)
+        {
+            _userManagementBLL = userManagementBLL;
+        }
         public IActionResult Test()
         {
             OnlineShopAlphaContext context = new OnlineShopAlphaContext();
@@ -15,34 +20,11 @@ namespace OnlineShop.Api.Controllers
         }
 
         //[HttpGet("users")]
-        public IActionResult UsersList()
+        public IActionResult UserByEmail([FromBody]string email)
         {
-            IUserManagementBLL user = new UserManagementBLL();
-            //Users x = new Users()
-            //{
-            //    Email = "sdklbhklugfdfkljbjklha",
-            //    Address = new Addresses()
-            //    {
-            //        City = "sfdsfad",
-            //        Country = "dafdsfsd",
-            //        Phone = "dasdsfsdsa",
-            //        State = "dasdsfdfds",
-            //        Street = "saddfsdsad",
-            //        Users = null,
-            //        Zip = "asddsfsfasd"
-            //    },
-            //    FirstName = "dasdfsdfsd",
-            //    AddressId = 5,
-            //    LastName = "asddfdsfasd",
-            //    Orders = null,
-            //    Password = "adsfdsfsdsd",
-            //    RegistrationDate = null,
-            //    Username = "asddsfdfasd"
-            //};
+            _userManagementBLL.GetUserByEmail(email);
+            return Ok();
 
-            //user.AddUser(x);
-
-            return Ok(user.AllUsers);
         }
     }
 }

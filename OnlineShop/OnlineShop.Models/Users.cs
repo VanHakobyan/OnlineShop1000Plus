@@ -21,6 +21,7 @@ namespace OnlineShop.Models
         public string Password { get; set; }
         public DateTime? RegistrationDate { get; set; }
         public int? AddressId { get; set; }
+        public string Token { get; set; }
 
         public virtual Addresses Address { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
