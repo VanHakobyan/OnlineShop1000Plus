@@ -6,11 +6,11 @@ using OnlineShop.Api.Services.Interfaces;
 using System.Text;
 using OnlineShop.Api.Helpers;
 using OnlineShop.Bll.Repositories;
-using OnlineShop.Models;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using OnlineShop.Common;
 
 
 namespace OnlineShop.Api.Services.Classes

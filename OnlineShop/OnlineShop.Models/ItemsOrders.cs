@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace OnlineShop.Models
+﻿namespace OnlineShop.Common
 {
     public partial class ItemsOrders
     {

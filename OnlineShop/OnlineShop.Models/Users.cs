@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShop.Models
+namespace OnlineShop.Common
 {
     public partial class Users
     {

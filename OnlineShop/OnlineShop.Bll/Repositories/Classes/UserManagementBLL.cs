@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using OnlineShop.Common;
 using OnlineShop.Dal.Repositories;
-using OnlineShop.Models;
 
 namespace OnlineShop.Bll.Repositories
 {

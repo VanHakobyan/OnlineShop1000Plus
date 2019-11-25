@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Bll.Repositories;
 using OnlineShop.Dal;
-using OnlineShop.Models;
 
 namespace OnlineShop.Api.Controllers
 {

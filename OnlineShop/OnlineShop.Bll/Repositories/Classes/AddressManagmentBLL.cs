@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using OnlineShop.Models;
+using OnlineShop.Common;
 using OnlineShop.Dal.Repositories;
 
 namespace OnlineShop.Bll.Repositories

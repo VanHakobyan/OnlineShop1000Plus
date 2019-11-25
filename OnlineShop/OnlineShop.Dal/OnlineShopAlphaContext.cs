@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineShop.Models;
+using OnlineShop.Common;
 
 namespace OnlineShop.Dal
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OnlineShop.Models;
+using OnlineShop.Common;
 
 namespace OnlineShop.Dal.Repositories
 {
