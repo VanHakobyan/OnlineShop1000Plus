@@ -76,10 +76,7 @@ namespace OnlineShop.Api
 
             app.UseRouting();
 
-            //app.UseCors(x => x
-            //    .AllowAnyOrigin()
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader());
+            app.UseCors("FrontPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();
