@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
+using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
-using OnlineShop.Dal.Repositories;
+using OnlineShop.Dal.Repositories.Implementation;
+using OnlineShop.Dal.Repositories.Interfaces;
 
-namespace OnlineShop.Bll.Repositories
+namespace OnlineShop.Bll.Repositories.Implementation
 {
     public class UserManagementBLL : IUserManagementBLL
     {
-        IUserManagement _userManagementDAL = new UserManagement();
+        IUserManagementDAL _userManagementDAL = new UserManagementDAL(new Dal.OnlineShopAlphaContext());
 
         public IEnumerable<Users> AllUsers => _userManagementDAL.AllUsers;
 

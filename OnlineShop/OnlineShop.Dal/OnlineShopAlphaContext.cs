@@ -6,7 +6,8 @@ namespace OnlineShop.Dal
     public partial class OnlineShopAlphaContext : DbContext
     {
         public OnlineShopAlphaContext() { }
-        public OnlineShopAlphaContext(DbContextOptions<OnlineShopAlphaContext> options) : base(options) { }
+        public OnlineShopAlphaContext(DbContextOptions<OnlineShopAlphaContext> options) 
+            : base(options) { }
 
         public virtual DbSet<Addresses> Addresses { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
@@ -20,7 +21,6 @@ namespace OnlineShop.Dal
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(ConfigHelper.GetDefaultConnectionString());
             }
         }

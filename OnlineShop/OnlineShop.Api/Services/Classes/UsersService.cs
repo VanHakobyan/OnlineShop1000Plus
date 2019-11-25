@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using OnlineShop.Api.Services.Interfaces;
 using System.Text;
 using OnlineShop.Api.Helpers;
-using OnlineShop.Bll.Repositories;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using OnlineShop.Common;
-
+using OnlineShop.Bll.Repositories.Interfaces;
 
 namespace OnlineShop.Api.Services.Classes
 {

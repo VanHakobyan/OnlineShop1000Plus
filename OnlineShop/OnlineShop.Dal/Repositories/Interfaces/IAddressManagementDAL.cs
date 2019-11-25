@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using OnlineShop.Common;
 
-namespace OnlineShop.Dal.Repositories
+namespace OnlineShop.Dal.Repositories.Interfaces
 {
-    public interface IAddressManagement
+    public interface IAddressManagementDAL
     {
         //Create
         void AddAddress(Addresses newAddress);

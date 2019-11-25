@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OnlineShop.Common;
 
-namespace OnlineShop.Bll.Repositories
+namespace OnlineShop.Bll.Repositories.Interfaces
 {
     public interface IUserManagementBLL
     {

@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
-using OnlineShop.Dal.Repositories;
+using OnlineShop.Dal.Repositories.Implementation;
 
-namespace OnlineShop.Bll.Repositories
+namespace OnlineShop.Bll.Repositories.Implementation
 {
     class AddressManagmentBLL : IAddressManagementBLL
     {
-        AddressManagement _addressDAL = new AddressManagement();
+        AddressManagementDAL _addressDAL = new AddressManagementDAL();
 
         public IEnumerable<Addresses> AllAddresses => _addressDAL.AllAddresses;
 

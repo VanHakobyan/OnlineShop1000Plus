@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using OnlineShop.Common;
 
-namespace OnlineShop.Dal.Repositories
+namespace OnlineShop.Dal.Repositories.Interfaces
 {
-    public interface IUserManagement
+    public interface IUserManagementDAL
     {
         //Create
         void AddUser(Users user);

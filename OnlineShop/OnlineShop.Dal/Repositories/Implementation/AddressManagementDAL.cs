@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using OnlineShop.Common;
+using OnlineShop.Dal.Repositories.Interfaces;
 
-namespace OnlineShop.Dal.Repositories
+namespace OnlineShop.Dal.Repositories.Implementation
 {
-    public class AddressManagement : IAddressManagement
+    public class AddressManagementDAL : IAddressManagementDAL
     {
         OnlineShopAlphaContext context = new OnlineShopAlphaContext();
 

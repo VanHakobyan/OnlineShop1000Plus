@@ -6,12 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
 using OnlineShop.Dal;
-using OnlineShop.Bll.Repositories;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Api.Services.Classes;
 using OnlineShop.Api.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using OnlineShop.Bll.Repositories.Interfaces;
+using OnlineShop.Bll.Repositories.Implementation;
 
 namespace OnlineShop.Api
 {

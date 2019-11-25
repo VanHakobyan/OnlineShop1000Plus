@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Bll.Repositories;
+using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Dal;
 
 namespace OnlineShop.Api.Controllers
