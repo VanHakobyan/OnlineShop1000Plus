@@ -6,7 +6,7 @@ using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
-    class ProductManagementBLL : IProductManagementBLL
+    public class ProductManagementBLL : IProductManagementBLL
     {
         private readonly OnlineShopDAL _onlineShopDAL;
         IProductManagementDAL _productManagementDAL;
@@ -32,6 +32,11 @@ namespace OnlineShop.Bll.Repositories.Implementation
         public Products GetProductByName(string name)
         {
             return _productManagementDAL.GetProductByName(name);
+        }
+
+        public IEnumerable<Products> GetProductsByPage(int count, int page)
+        {
+            return _productManagementDAL.GetProductsByPage(count, page);
         }
 
         public void RemoveProduct(params Products[] products)

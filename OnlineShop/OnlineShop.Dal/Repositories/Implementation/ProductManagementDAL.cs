@@ -5,7 +5,7 @@ using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Dal.Repositories.Implementation
 {
-    class ProductManagementDAL : BaseDAL, IProductManagementDAL
+    public class ProductManagementDAL : BaseDAL, IProductManagementDAL
     {
         public ProductManagementDAL(OnlineShopAlphaContext dbContext) 
             : base(dbContext) { }
@@ -26,6 +26,11 @@ namespace OnlineShop.Dal.Repositories.Implementation
         public Products GetProductByName(string name)
         {
             return DbContext.Products.FirstOrDefault(x => x.Name == name);
+        }
+
+        public IEnumerable<Products> GetProductsByPage(int count, int page)
+        {
+            return AllProducts.Skip((page - 1) * count).Take(count);
         }
 
         public void RemoveProduct(params Products[] product)

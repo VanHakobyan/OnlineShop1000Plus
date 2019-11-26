@@ -12,6 +12,7 @@ namespace OnlineShop.Bll.Repositories.Interfaces
         IEnumerable<Products> AllProducts { get; }
         Products GetProductById(int id);
         Products  GetProductByName(string name);
+        IEnumerable<Products> GetProductsByPage(int count, int page);
 
         //Update
         void UpdateProduct(Products entity);
