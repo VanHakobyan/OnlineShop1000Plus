@@ -10,6 +10,7 @@ namespace OnlineShop.Dal.Repositories.Interfaces
 
         //Read
         IEnumerable<Items> AllItems { get; }
+        IEnumerable<Items> GetAllItemsByPage(int count, int page);
         Items GetItemById(int id);
 
         //Update

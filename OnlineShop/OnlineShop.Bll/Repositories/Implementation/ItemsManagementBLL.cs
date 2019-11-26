@@ -18,6 +18,10 @@ namespace OnlineShop.Bll.Repositories.Implementation
         }
 
         public IEnumerable<Items> AllItems => _itemsManagementDAL.AllItems;
+        public IEnumerable<Items> GetAllItemsByPage(int count, int page)
+        {
+           return _itemsManagementDAL.GetAllItemsByPage(count, page);
+        }
 
         public void AddItem(Items item)
         {
