@@ -10,6 +10,9 @@ namespace OnlineShop.Dal
         private OnlineShopAlphaContext _dbContext;
         private readonly DbContextOptions<OnlineShopAlphaContext> _options;
 
+        public OnlineShopDAL()
+        { }
+
         public OnlineShopDAL(DbContextOptions<OnlineShopAlphaContext> options)
         {
             _options = options;

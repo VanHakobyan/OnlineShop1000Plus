@@ -23,7 +23,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
             return DbContext.Items.Find(id);
         }
 
-        public void RemoveItem(params Items[] items)
+        public void RemoveItems(params Items[] items)
         {
             DbContext.Items.RemoveRange(items as IEnumerable<Items>);
             DbContext.SaveChanges();

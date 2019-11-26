@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using OnlineShop.Common;
 
-namespace OnlineShop.Dal.Repositories.Interfaces
+namespace OnlineShop.Bll.Repositories.Interfaces
 {
-    public interface IItemsManagementDAL
+    public interface IItemsManagementBLL
     {
         //Create
         void AddItem(Items item);
@@ -16,7 +16,7 @@ namespace OnlineShop.Dal.Repositories.Interfaces
         void UpdateItem(Items entity);
 
         //Delete
-        void RemoveItems(params Items[] items);
+        void RemoveItem(params Items[] items);
         void RemoveItemById(int id);
     }
 }
