@@ -18,6 +18,10 @@ namespace OnlineShop.Bll.Repositories.Implementation
         }
 
         public IEnumerable<Users> AllUsers => _userManagementDAL.AllUsers;
+        public IEnumerable<Users> GetAllUsersByPage(int count, int page)
+        {
+            return _userManagementDAL.GetAllUsersByPage(count, page);
+        }
 
         public void AddUser(Users user)
         {

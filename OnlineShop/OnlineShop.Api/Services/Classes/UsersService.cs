@@ -1,5 +1,6 @@
 ﻿using System;
 using OnlineShop.Api.Services.Interfaces;
+using System.Collections.Generic;
 using System.Text;
 using OnlineShop.Api.Helpers;
 using Microsoft.Extensions.Options;
@@ -99,6 +100,12 @@ namespace OnlineShop.Api.Services.Classes
             _userManagementBLL.AddUser(user);
 
             return user;
+        }
+
+        // get all users with paging
+        public IEnumerable<Users> GetAllUsersByPage(int count, int page)
+        {
+            return _userManagementBLL.GetAllUsersByPage(count, page);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace OnlineShop.Common
 {
@@ -20,7 +21,7 @@ namespace OnlineShop.Common
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ConfigHelper.GetDefaultConnectionString());
+                optionsBuilder.UseSqlServer("Server = localhost\\MSSQLSERVER02; Database = TestDB; Trusted_Connection = True;");
             }
         }
 

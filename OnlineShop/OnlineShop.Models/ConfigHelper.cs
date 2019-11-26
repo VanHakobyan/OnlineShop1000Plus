@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace OnlineShop
 {
