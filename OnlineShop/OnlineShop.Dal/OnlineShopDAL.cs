@@ -17,7 +17,7 @@ namespace OnlineShop.Dal
         {
             _options = options;
         }
-        private OnlineShopAlphaContext DbContext => _dbContext ?? (_dbContext = new OnlineShopAlphaContext(_options));
+        private OnlineShopAlphaContext DbContext => _dbContext ?? (_dbContext = new OnlineShopAlphaContext());
 
         private IUserManagementDAL _userManagementDAL;
         public IUserManagementDAL UserManagementDAL => _userManagementDAL ?? (_userManagementDAL = new UserManagementDAL(DbContext));

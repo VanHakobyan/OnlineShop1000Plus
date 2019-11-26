@@ -18,6 +18,7 @@ namespace OnlineShop.Common
 
         [DataType(DataType.EmailAddress, ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
+        [DataType(DataType.Password, ErrorMessage ="Not Secure Password")]
         public string Password { get; set; }
         public DateTime? RegistrationDate { get; set; }
         public int? AddressId { get; set; }
