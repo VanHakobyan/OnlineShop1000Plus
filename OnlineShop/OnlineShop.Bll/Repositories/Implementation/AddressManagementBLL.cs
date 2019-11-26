@@ -6,7 +6,7 @@ using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
-    class AddressManagementBLL : IAddressManagementBLL
+    public class AddressManagementBLL : IAddressManagementBLL
     {
         OnlineShopDAL _onlineShopDAL;
         IAddressManagementDAL _addressManagementDAL;

@@ -10,6 +10,7 @@ namespace OnlineShop.Dal.Repositories.Interfaces
 
         //Read
         IEnumerable<Users> AllUsers { get; }
+        IEnumerable<Users> GetAllUsersByPage(int count, int page);
         Users GetUserById(int id);
         Users GetUserByUsername(string username);
         bool SearForEmail(string email);

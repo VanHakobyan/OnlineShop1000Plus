@@ -1,5 +1,6 @@
 ﻿using System;
 using OnlineShop.Api.Services.Interfaces;
+using System.Collections.Generic;
 using System.Text;
 using OnlineShop.Api.Helpers;
 using Microsoft.Extensions.Options;
@@ -15,10 +16,12 @@ namespace OnlineShop.Api.Services.Classes
     {
         private readonly JwtSettings _jwtSettings;
         private readonly IUserManagementBLL _userManagementBLL;
-        public UsersService(IOptions<JwtSettings> jwtSettings, IUserManagementBLL userManagementBLL)
+        private readonly IAddressManagementBLL _addressManagementBLL;
+        public UsersService(IOptions<JwtSettings> jwtSettings, IUserManagementBLL userManagementBLL, IAddressManagementBLL addressManagementBLL)
         {
             _jwtSettings = jwtSettings.Value;
             _userManagementBLL = userManagementBLL;
+            _addressManagementBLL = addressManagementBLL;
         }
 
         public Users Authenticate(string email, string password)
@@ -99,6 +102,46 @@ namespace OnlineShop.Api.Services.Classes
             _userManagementBLL.AddUser(user);
 
             return user;
+        }
+
+        // get all users with paging
+        public IEnumerable<Users> GetAllUsersByPage(int count, int page)
+        {
+            return _userManagementBLL.GetAllUsersByPage(count, page);
+        }
+
+        // add a new address
+        public Addresses AddAddress(string country, string state, string city, string street, string zip, string phone)
+        {
+            // check if country is not blank
+            if (string.IsNullOrWhiteSpace(country))
+                throw new AppExceptions("Country is required");
+
+            // check if state is not blank
+            if (string.IsNullOrWhiteSpace(state))
+                throw new AppExceptions("State is required");
+
+            // check if city is not blank
+            if (string.IsNullOrWhiteSpace(city))
+                throw new AppExceptions("City is required");
+
+            // check if street is not blank
+            if (string.IsNullOrWhiteSpace(street))
+                throw new AppExceptions("Street is required");
+
+            // check if zip is not blank
+            if (string.IsNullOrWhiteSpace(zip))
+                throw new AppExceptions("Zip is required");
+
+            // check if phone is not blank
+            if (string.IsNullOrWhiteSpace(phone))
+                throw new AppExceptions("Phone is required");
+
+            var address = new Addresses { Country = country, State = state, City = city, Street = street, Zip = zip, Phone = phone };
+
+            _addressManagementBLL.AddAddress(address);
+
+            return address;
         }
     }
 }

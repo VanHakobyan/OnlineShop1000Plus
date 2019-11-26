@@ -11,6 +11,10 @@ namespace OnlineShop.Dal.Repositories.Implementation
             : base(dbContext) { }
 
         public IEnumerable<Items> AllItems => DbContext.Items.AsEnumerable();
+        public IEnumerable<Items> GetAllItemsByPage(int count, int page)
+        {
+            return AllItems.Skip((page - 1) * count).Take(count);
+        }
 
         public void AddItem(Items item)
         {

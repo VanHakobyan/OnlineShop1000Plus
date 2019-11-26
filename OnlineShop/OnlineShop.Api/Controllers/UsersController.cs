@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Common;
+using System.Collections.Generic;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -28,6 +29,20 @@ namespace OnlineShop.Api.Controllers
         {
             var user = _usersService.Authorize(model.Email, model.Username, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
             return Ok(user);
+        }
+
+        [HttpGet]
+        public IActionResult Users([FromQuery(Name = "count")]int count, [FromQuery(Name = "page")]int page)
+        {
+            IEnumerable<Users> users = _usersService.GetAllUsersByPage(count, page);
+            return Ok(users);
+        }
+
+        [HttpPost]
+        public IActionResult Address([FromBody] Addresses addressModel)
+        {
+            var address = _usersService.AddAddress(addressModel.Country, addressModel.State, addressModel.City, addressModel.Street, addressModel.Zip, addressModel.Phone);
+            return Ok(address);
         }
     }
 }

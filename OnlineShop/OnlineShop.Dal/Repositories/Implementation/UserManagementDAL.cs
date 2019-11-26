@@ -18,6 +18,10 @@ namespace OnlineShop.Dal.Repositories.Implementation
 
         //Read
         public IEnumerable<Users> AllUsers => DbContext.Users.AsEnumerable();
+        public IEnumerable<Users> GetAllUsersByPage(int count, int page)
+        {
+            return AllUsers.Skip((page - 1) * count).Take(count);
+        }
         public Users GetUserById(int id)
         {
             return DbContext.Users.Find(id);

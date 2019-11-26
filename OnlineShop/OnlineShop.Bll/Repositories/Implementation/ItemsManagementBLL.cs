@@ -6,7 +6,7 @@ using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
-    class ItemsManagementBLL : IItemsManagementBLL
+    public class ItemsManagementBLL : IItemsManagementBLL
     {
         OnlineShopDAL _onlineShopDAL;
         IItemsManagementDAL _itemsManagementDAL;
@@ -18,6 +18,10 @@ namespace OnlineShop.Bll.Repositories.Implementation
         }
 
         public IEnumerable<Items> AllItems => _itemsManagementDAL.AllItems;
+        public IEnumerable<Items> GetAllItemsByPage(int count, int page)
+        {
+           return _itemsManagementDAL.GetAllItemsByPage(count, page);
+        }
 
         public void AddItem(Items item)
         {
