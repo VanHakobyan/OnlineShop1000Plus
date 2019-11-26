@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using OnlineShop.BLL.Repositories.Interfaces;
+using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
 using OnlineShop.Dal;
 using OnlineShop.Dal.Repositories.Interfaces;
