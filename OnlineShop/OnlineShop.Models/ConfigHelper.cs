@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace OnlineShop.Dal
+namespace OnlineShop
 {
     public static class ConfigHelper
     {

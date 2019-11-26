@@ -1,4 +1,6 @@
-﻿namespace OnlineShop.Dal.Repositories.Interfaces
+﻿using OnlineShop.Common;
+
+namespace OnlineShop.Dal.Repositories.Interfaces
 {
     interface IBaseDAL
     {

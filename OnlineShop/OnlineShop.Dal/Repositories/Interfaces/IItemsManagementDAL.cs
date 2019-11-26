@@ -3,7 +3,7 @@ using OnlineShop.Common;
 
 namespace OnlineShop.Dal.Repositories.Interfaces
 {
-    interface IItemsManagementDAL
+    public interface IItemsManagementDAL
     {
         //Create
         void AddItem(Items item);

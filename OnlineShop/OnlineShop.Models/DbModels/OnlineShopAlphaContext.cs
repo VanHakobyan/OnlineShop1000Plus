@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineShop.Common;
 
-namespace OnlineShop.Dal
+namespace OnlineShop.Common
 {
     public partial class OnlineShopAlphaContext : DbContext
     {

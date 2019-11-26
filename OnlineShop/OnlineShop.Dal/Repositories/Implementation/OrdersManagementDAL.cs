@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OnlineShop.Dal.Repositories.Implementation
 {
-    class OrdersManagementDAL : BaseDAL, IOrdersManagementDAL
+    public class OrdersManagementDAL : BaseDAL, IOrdersManagementDAL
     {
         public OrdersManagementDAL(OnlineShopAlphaContext dbContext)
             : base(dbContext) { }

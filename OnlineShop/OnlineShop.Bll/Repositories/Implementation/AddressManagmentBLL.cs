@@ -7,7 +7,7 @@ namespace OnlineShop.Bll.Repositories.Implementation
 {
     class AddressManagmentBLL : IAddressManagementBLL
     {
-        AddressManagementDAL _addressDAL = new AddressManagementDAL();
+        AddressManagementDAL _addressDAL = new AddressManagementDAL(null);
 
         public IEnumerable<Addresses> AllAddresses => _addressDAL.AllAddresses;
 

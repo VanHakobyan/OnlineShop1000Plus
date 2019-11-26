@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Bll.Repositories.Interfaces;
-using OnlineShop.Dal;
+using OnlineShop.Common;
 
 namespace OnlineShop.Api.Controllers
 {

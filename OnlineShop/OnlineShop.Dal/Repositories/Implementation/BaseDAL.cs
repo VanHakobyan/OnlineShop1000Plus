@@ -1,4 +1,5 @@
-﻿using OnlineShop.Dal.Repositories.Interfaces;
+﻿using OnlineShop.Common;
+using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Dal.Repositories.Implementation
 {

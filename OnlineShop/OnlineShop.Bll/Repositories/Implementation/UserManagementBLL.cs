@@ -8,7 +8,7 @@ namespace OnlineShop.Bll.Repositories.Implementation
 {
     public class UserManagementBLL : IUserManagementBLL
     {
-        IUserManagementDAL _userManagementDAL = new UserManagementDAL(new Dal.OnlineShopAlphaContext());
+        IUserManagementDAL _userManagementDAL = new UserManagementDAL(new OnlineShopAlphaContext());
 
         public IEnumerable<Users> AllUsers => _userManagementDAL.AllUsers;
 

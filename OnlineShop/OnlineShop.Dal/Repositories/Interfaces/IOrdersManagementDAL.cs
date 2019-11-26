@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OnlineShop.Dal.Repositories.Interfaces
 {
-    interface IOrdersManagementDAL
+    public interface IOrdersManagementDAL
     {
         //Create
         void AddOrder(Orders order);

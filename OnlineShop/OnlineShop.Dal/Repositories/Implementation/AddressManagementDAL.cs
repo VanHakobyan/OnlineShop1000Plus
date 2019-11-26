@@ -5,41 +5,42 @@ using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Dal.Repositories.Implementation
 {
-    public class AddressManagementDAL : IAddressManagementDAL
+    public class AddressManagementDAL : BaseDAL, IAddressManagementDAL
     {
-        OnlineShopAlphaContext context = new OnlineShopAlphaContext();
+        public AddressManagementDAL(OnlineShopAlphaContext context) 
+            : base(context) { }
 
-        public IEnumerable<Addresses> AllAddresses => context.Addresses.AsEnumerable();
+        public IEnumerable<Addresses> AllAddresses => base.DbContext.Addresses.AsEnumerable();
 
         public void AddAddress(Addresses newAddress)
         {
-            context.Addresses.Add(newAddress);
-            context.SaveChanges();
+            DbContext.Addresses.Add(newAddress);
+            DbContext.SaveChanges();
         }
 
         public Addresses GetAddressById(int id)
         {
-            return context.Addresses.Find(id);
+            return DbContext.Addresses.Find(id);
         }
 
         public Addresses GetAddressByUser(Users user)
         {
-            return context.Addresses.FirstOrDefault(x => x.Id == user.AddressId);
+            return DbContext.Addresses.FirstOrDefault(x => x.Id == user.AddressId);
         }
 
         public void RemoveAddress(Addresses address)
         {
             if (address.Users.Count == 0)
             {
-                context.Addresses.Remove(address);
-                context.SaveChanges();
+                DbContext.Addresses.Remove(address);
+                DbContext.SaveChanges();
             }
         }
 
         public void UpdateAddress(Addresses entity)
         {
-            context.Addresses.Update(entity);
-            context.SaveChanges();
+            DbContext.Addresses.Update(entity);
+            DbContext.SaveChanges();
         }
     }
 }
