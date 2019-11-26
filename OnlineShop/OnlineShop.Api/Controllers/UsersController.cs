@@ -37,5 +37,12 @@ namespace OnlineShop.Api.Controllers
             IEnumerable<Users> users = _usersService.GetAllUsersByPage(count, page);
             return Ok(users);
         }
+
+        [HttpPost]
+        public IActionResult Address([FromBody] Addresses addressModel)
+        {
+            var address = _usersService.AddAddress(addressModel.Country, addressModel.State, addressModel.City, addressModel.Street, addressModel.Zip, addressModel.Phone);
+            return Ok(address);
+        }
     }
 }

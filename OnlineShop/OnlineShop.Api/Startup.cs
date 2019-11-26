@@ -58,6 +58,7 @@ namespace OnlineShop.Api
 
             services.AddScoped<IUsersService, UsersService>();
             services.AddSingleton<IUserManagementBLL, UserManagementBLL>();
+            services.AddSingleton<IAddressManagementBLL, AddressManagementBLL>();
             services.AddCors(o => o.AddPolicy("FrontPolicy", builder =>
             {
                 builder.AllowAnyOrigin()

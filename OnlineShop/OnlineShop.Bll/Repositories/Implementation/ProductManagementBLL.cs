@@ -6,7 +6,7 @@ using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
-    class ProductManagementBLL : IProductManagementBLL
+    public class ProductManagementBLL : IProductManagementBLL
     {
         private readonly OnlineShopDAL _onlineShopDAL;
         IProductManagementDAL _productManagementDAL;

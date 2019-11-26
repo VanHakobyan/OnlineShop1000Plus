@@ -12,5 +12,7 @@ namespace OnlineShop.Api.Services.Interfaces
         Users Authorize(string username, string email, string firstName, string lastName, string password, string confirmPassword);
 
         IEnumerable<Users> GetAllUsersByPage(int count, int page);
+
+        Addresses AddAddress(string country, string state, string city, string street, string zip, string phone);
     }
 }
