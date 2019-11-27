@@ -17,7 +17,7 @@ namespace OnlineShop.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Authenticate([FromBody]AuthenticateModel model)
+        public IActionResult Login([FromBody]AuthenticateModel model)
         {
             var user = _usersService.Authenticate(model.Email, model.Password);
             return Ok(user);
@@ -25,7 +25,7 @@ namespace OnlineShop.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Authorize([FromBody]AuthorizeModel model)
+        public IActionResult Register([FromBody]AuthorizeModel model)
         {
             var user = _usersService.Authorize(model.Email, model.Username, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
             return Ok(user);
