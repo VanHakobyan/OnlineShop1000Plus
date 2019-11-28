@@ -35,7 +35,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
             return DbContext.Users.FirstOrDefault(x => x.Email == email);
         }
 
-        public bool SearForEmail(string email)
+        public bool SearchForEmail(string email)
         {
             if (DbContext.Users.Any(x => x.Email == email)) return true;
             return false;

@@ -13,7 +13,7 @@ namespace OnlineShop.Dal.Repositories.Interfaces
         IEnumerable<Users> GetAllUsersByPage(int count, int page);
         Users GetUserById(int id);
         Users GetUserByUsername(string username);
-        bool SearForEmail(string email);
+        bool SearchForEmail(string email);
         bool SearchForUsername(string username);
 
         //Update

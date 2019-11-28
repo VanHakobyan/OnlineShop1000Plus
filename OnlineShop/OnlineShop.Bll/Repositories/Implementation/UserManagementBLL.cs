@@ -43,9 +43,9 @@ namespace OnlineShop.Bll.Repositories.Implementation
             return _userManagementDAL.GetUserByUsername(username);
         }
 
-        public bool SearForEmail(string email)
+        public bool SearchForEmail(string email)
         {
-            return _userManagementDAL.SearForEmail(email);
+            return _userManagementDAL.SearchForEmail(email);
         }
         public bool SearchForUsername(string username)
         {

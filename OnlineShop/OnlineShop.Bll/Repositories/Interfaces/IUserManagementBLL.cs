@@ -14,7 +14,7 @@ namespace OnlineShop.Bll.Repositories.Interfaces
         Users GetUserById(int id);
         Users GetUserByUsername(string username);
         Users GetUserByEmail(string email);
-        bool SearForEmail(string email);
+        bool SearchForEmail(string email);
         bool SearchForUsername(string username);
 
         //Update

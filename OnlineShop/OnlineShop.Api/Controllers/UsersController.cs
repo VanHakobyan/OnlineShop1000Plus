@@ -27,7 +27,7 @@ namespace OnlineShop.Api.Controllers
         [HttpPost]
         public IActionResult Register([FromBody]AuthorizeModel model)
         {
-            var user = _usersService.Authorize(model.Email, model.Username, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
+            var user = _usersService.Authorize(model.Username, model.Email, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
             return Ok(user);
         }
 
