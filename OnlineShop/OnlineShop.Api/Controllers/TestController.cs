@@ -12,6 +12,8 @@ namespace OnlineShop.Api.Controllers
         {
             _userManagementBLL = userManagementBLL;
         }
+        
+        [HttpGet]
         public IActionResult Test()
         {
             OnlineShopAlphaContext context = new OnlineShopAlphaContext();

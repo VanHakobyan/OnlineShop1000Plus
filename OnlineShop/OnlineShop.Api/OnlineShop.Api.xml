@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OnlineShop.Api</name>
+    </assembly>
+    <members>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Login(OnlineShop.Common.AuthenticateModel)">
+             <summary>
+             login a registered user
+             </summary>
+             <param name="model">the login form model</param>
+             <returns>the logged-in user</returns>
+             <remarks>
+             sample request (this reques logs in a registered user)\
+             POST  /users/login\
+             {\
+                 "Email" : "sampleEmail",\
+                 "Password" : "samplePassword"\
+            }
+             </remarks>>
+        </member>
+    </members>
+</doc>

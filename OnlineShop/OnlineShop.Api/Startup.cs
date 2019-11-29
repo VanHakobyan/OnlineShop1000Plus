@@ -1,11 +1,13 @@
+using System;
+using System.Reflection;
+using System.IO;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Text;
-using OnlineShop.Dal;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Api.Services.Classes;
 using OnlineShop.Api.Helpers;
@@ -68,6 +70,28 @@ namespace OnlineShop.Api
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
+
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc(
+                    "OnlineShopOpenApiSpecification",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Title = "Online Shop Api",
+                        Version = "3",
+                        Description = "Through this API you can access to users and products of the online shop.",
+                        License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                        {
+                            Name = "MIT License",
+                            Url = new Uri("https://opensource.org/licenses/MIT")
+                        }
+                    });
+
+                var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+
+                setupAction.IncludeXmlComments(xmlCommentsFullPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +103,15 @@ namespace OnlineShop.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(setupAction =>
+            {
+                setupAction.SwaggerEndpoint(
+                    "/swagger/OnlineShopOpenApiSpecification/swagger.json",
+                    "Online Shop Api");
+                setupAction.RoutePrefix = "";
+            });
 
             app.UseRouting();
 

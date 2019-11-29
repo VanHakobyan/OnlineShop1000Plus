@@ -15,6 +15,19 @@ namespace OnlineShop.Api.Controllers
             _usersService = usersService;
         }
 
+        /// <summary>
+        /// login a registered user
+        /// </summary>
+        /// <param name="model">the login form model</param>
+        /// <returns>the logged-in user</returns>
+        /// <remarks>
+        /// sample request (this reques logs in a registered user)\
+        /// POST  /users/login\
+        /// {\
+        ///     "Email" : "sampleEmail",\
+        ///     "Password" : "samplePassword"\
+        ///}
+        /// </remarks>>
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody]AuthenticateModel model)
