@@ -10,6 +10,7 @@
              </summary>
              <param name="model">the login form model, from body</param>
              <returns>the logged-in user</returns>
+             <response code = "200">returns the logged-in user</response>
              <remarks>
              sample request (this request logs in a registered user)\
              POST  /users/login\

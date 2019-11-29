@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShop.Common
 {
+    /// <summary>
+    /// to specify a category for a group of products
+    /// </summary>
     public partial class Categories
     {
         public Categories()
@@ -9,6 +13,7 @@ namespace OnlineShop.Common
             Products = new HashSet<Products>();
         }
 
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
 

@@ -19,6 +19,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesDefaultResponseType]
         public IActionResult CreateItem([FromBody] Items itemModel)
         {
             var item = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
@@ -26,6 +27,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesDefaultResponseType]
         public IActionResult RemoveItem([FromQuery(Name = "ItemId")] int id)
         {
             _itemsService.DeleteItem(id);
@@ -33,6 +35,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesDefaultResponseType]
         public IActionResult EditItem([FromBody] Items itemModel)
         {
             var newItem = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
@@ -40,6 +43,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesDefaultResponseType]
         public IActionResult Items([FromQuery(Name ="count")] int count, [FromQuery(Name = "page")] int page)
         {
             IEnumerable<Items> items = _itemsService.GetAllItemsByPage(count, page);

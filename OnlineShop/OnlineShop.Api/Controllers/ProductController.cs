@@ -21,6 +21,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesDefaultResponseType]
         public IActionResult AddProduct([FromBody] Products product)
         {
             _productsBLL.AddProduct(product);
@@ -28,6 +29,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesDefaultResponseType]
         public IActionResult DeleteProduct([FromQuery(Name = "ProductId")] int id)
         {
             _productsBLL.RemoveProductById(id);
@@ -35,6 +37,7 @@ namespace OnlineShop.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesDefaultResponseType]
         public IActionResult EditProduct([FromBody] Products product)
         {
             _productsBLL.UpdateProduct(product);
