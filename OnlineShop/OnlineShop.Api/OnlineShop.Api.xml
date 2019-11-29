@@ -4,6 +4,62 @@
         <name>OnlineShop.Api</name>
     </assembly>
     <members>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.CreateItem(OnlineShop.Common.Items)">
+            <summary>
+            creates an item of a product
+            </summary>
+            <param name="itemModel">item specific properties</param>
+            <returns>new item</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.RemoveItem(System.Int32)">
+            <summary>
+            deletes existing item
+            </summary>
+            <param name="id">item id</param>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.EditItem(OnlineShop.Common.Items)">
+            <summary>
+            updates item info
+            </summary>
+            <param name="itemModel">new item properties</param>
+            <returns>updated item</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.Items(System.Int32,System.Int32)">
+            <summary>
+            gets all available items of a product
+            </summary>
+            <param name="count">count of items per page</param>
+            <param name="page">page number</param>
+            <returns>all available items</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.Products(System.Int32,System.Int32)">
+            <summary>
+            gets all products in the given category
+            </summary>
+            <param name="count">count of products per page</param>
+            <param name="page">page number</param>
+            <returns>all available products</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.AddProduct(OnlineShop.Common.Products)">
+            <summary>
+            adds new product
+            </summary>
+            <param name="product">product specific properties</param>
+            <returns>new product</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.DeleteProduct(System.Int32)">
+            <summary>
+            deletes existing product
+            </summary>
+            <param name="id">product id</param>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.EditProduct(OnlineShop.Common.Products)">
+            <summary>
+            updated product info
+            </summary>
+            <param name="product">new product properties</param>
+            <returns>updated product</returns>
+        </member>
         <member name="M:OnlineShop.Api.Controllers.UsersController.Login(OnlineShop.Common.AuthenticateModel)">
              <summary>
              logs in a registered user
@@ -44,7 +100,7 @@
             <summary>
             returns all users
             </summary>
-            <param name="count">count of the users per page</param>
+            <param name="count">count of users per page</param>
             <param name="page">page number</param>
             <returns>all registered users</returns>
         </member>

@@ -69,7 +69,7 @@ namespace OnlineShop.Api.Controllers
         /// <summary>
         /// returns all users
         /// </summary>
-        /// <param name="count">count of the users per page</param>
+        /// <param name="count">count of users per page</param>
         /// <param name="page">page number</param>
         /// <returns>all registered users</returns>
         [HttpGet]
