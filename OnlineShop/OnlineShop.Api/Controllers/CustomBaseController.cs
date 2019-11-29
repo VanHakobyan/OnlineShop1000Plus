@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineShop.Api.Controllers
 {
-    [Route("api/[controller]/[action]/{id?}")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [EnableCors("FrontPolicy")]
     public class CustomBaseController : ControllerBase

@@ -14,7 +14,7 @@ namespace OnlineShop.Api.Controllers
         private readonly IProductManagementBLL _productsBLL = new ProductManagementBLL();
 
         [HttpGet]
-        public IActionResult GetProducts([FromQuery(Name = "count")] int count, [FromQuery(Name = "page")] int page)
+        public IActionResult Products([FromQuery(Name = "count")] int count, [FromQuery(Name = "page")] int page)
         {
             var products = _productsBLL.GetProductsByPage(count, page);
             return Ok(products);

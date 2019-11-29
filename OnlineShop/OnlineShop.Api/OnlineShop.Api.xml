@@ -8,10 +8,10 @@
              <summary>
              login a registered user
              </summary>
-             <param name="model">the login form model</param>
+             <param name="model">the login form model, from body</param>
              <returns>the logged-in user</returns>
              <remarks>
-             sample request (this reques logs in a registered user)\
+             sample request (this request logs in a registered user)\
              POST  /users/login\
              {\
                  "Email" : "sampleEmail",\

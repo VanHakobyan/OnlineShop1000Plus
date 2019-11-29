@@ -110,6 +110,11 @@ namespace OnlineShop.Api.Services.Classes
             return _userManagementBLL.GetAllUsersByPage(count, page);
         }
 
+        public Users GetUserByUsername(string username)
+        {
+            return _userManagementBLL.GetUserByUsername(username);
+        }
+
         // add a new address
         public Addresses AddAddress(string country, string state, string city, string street, string zip, string phone)
         {

@@ -18,10 +18,10 @@ namespace OnlineShop.Api.Controllers
         /// <summary>
         /// login a registered user
         /// </summary>
-        /// <param name="model">the login form model</param>
+        /// <param name="model">the login form model, from body</param>
         /// <returns>the logged-in user</returns>
         /// <remarks>
-        /// sample request (this reques logs in a registered user)\
+        /// sample request (this request logs in a registered user)\
         /// POST  /users/login\
         /// {\
         ///     "Email" : "sampleEmail",\
@@ -51,6 +51,13 @@ namespace OnlineShop.Api.Controllers
             return Ok(users);
         }
 
+        [HttpGet]
+        public IActionResult User([FromQuery(Name = "username")] string username)
+        {
+            var user = _usersService.GetUserByUsername(username);
+            return Ok(user);
+        }
+        
         [HttpPost]
         public IActionResult Address([FromBody] Addresses addressModel)
         {
