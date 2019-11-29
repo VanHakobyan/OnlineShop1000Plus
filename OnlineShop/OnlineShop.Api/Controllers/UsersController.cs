@@ -92,7 +92,24 @@ namespace OnlineShop.Api.Controllers
             var user = _usersService.GetUserByUsername(username);
             return Ok(user);
         }
-        
+
+        /// <summary>
+        /// adds an address for a registered user
+        /// </summary>
+        /// <param name="addressModel">address form</param>
+        /// <returns>address</returns>
+        ///<remarks>
+        /// sample request (this request adds new address)\
+        /// POST  /users/adress\
+        /// {\
+        ///     "Country" : "sampleCountry",\
+        ///     "State" : "sampleState",\
+        ///     "City" : "sampleCity",\
+        ///     "Street" : "sampleStreet",\
+        ///     "Zip" : "sampleZip",\
+        ///     "Phone" : "samplePhone",
+        ///}
+        /// </remarks>>
         [HttpPost]
         [ProducesDefaultResponseType]
         public IActionResult Address([FromBody] Addresses addressModel)

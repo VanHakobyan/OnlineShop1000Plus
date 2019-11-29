@@ -6,7 +6,7 @@
     <members>
         <member name="M:OnlineShop.Api.Controllers.UsersController.Login(OnlineShop.Common.AuthenticateModel)">
              <summary>
-             login a registered user
+             logs in a registered user
              </summary>
              <param name="model">the login form model, from body</param>
              <returns>the logged-in user</returns>
@@ -17,6 +17,60 @@
              {\
                  "Email" : "sampleEmail",\
                  "Password" : "samplePassword"\
+            }
+             </remarks>>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Register(OnlineShop.Common.AuthorizeModel)">
+             <summary>
+             registers new user
+             </summary>
+             <param name="model">the register form model, from body</param>
+             <returns>the registered user</returns>
+             <response code = "200">returns the registered user</response>
+             <remarks>
+             sample request (this request registers new user)\
+             POST  /users/register\
+             {\
+                 "Email" : "sampleEmail",\
+                 "Username" : "sampleUsername",\
+                 "FirstName" : "sampleFirstName",\
+                 "LastName" : "sampleLastName",\
+                 "Password" : "samplePassword",\
+                 "ConfirmPassword" : "samplePassword",
+            }
+             </remarks>>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Users(System.Int32,System.Int32)">
+            <summary>
+            returns all users
+            </summary>
+            <param name="count">count of the users per page</param>
+            <param name="page">page number</param>
+            <returns>all registered users</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.User(System.String)">
+            <summary>
+            returns a user by username
+            </summary>
+            <param name="username">the username to search by</param>
+            <returns>the user with the given username</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Address(OnlineShop.Common.Addresses)">
+             <summary>
+             adds an address for a registered user
+             </summary>
+             <param name="addressModel">address form</param>
+             <returns>address</returns>
+            <remarks>
+             sample request (this request adds new address)\
+             POST  /users/adress\
+             {\
+                 "Country" : "sampleCountry",\
+                 "State" : "sampleState",\
+                 "City" : "sampleCity",\
+                 "Street" : "sampleStreet",\
+                 "Zip" : "sampleZip",\
+                 "Phone" : "samplePhone",
             }
              </remarks>>
         </member>
