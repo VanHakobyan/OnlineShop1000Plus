@@ -119,7 +119,7 @@
              <returns>address</returns>
             <remarks>
              sample request (this request adds new address)\
-             POST  /users/adress\
+             POST  /users/address\
              {\
                  "Country" : "sampleCountry",\
                  "State" : "sampleState",\

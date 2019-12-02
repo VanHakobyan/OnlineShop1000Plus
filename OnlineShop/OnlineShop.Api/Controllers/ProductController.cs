@@ -1,16 +1,16 @@
-﻿using System.Linq;
-using OnlineShop.Bll.Repositories.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Common;
+using OnlineShop.Api.Services.Interfaces;
+using OnlineShop.Bll.Repositories.Implementation;
 
 namespace OnlineShop.Api.Controllers
 {
     public class ProductController : CustomBaseController
     {
-        private readonly IProductManagementBLL _productsBLL;
-        public ProductController(IProductManagementBLL productsBLL)
+        private readonly IProductsService _productsService;
+        public ProductController(IProductsService productsService)
         {
-            _productsBLL = productsBLL;
+            _productsService = productsService;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace OnlineShop.Api.Controllers
         [HttpGet]
         public IActionResult Products([FromQuery(Name = "count")] int count, [FromQuery(Name = "page")] int page)
         {
-            var products = _productsBLL.GetProductsByPage(count, page);
+            var products = _productsService.GetProductsByPage(count, page);
             return Ok(products);
         }
 
@@ -35,7 +35,7 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult AddProduct([FromBody] Products product)
         {
-            _productsBLL.AddProduct(product);
+            _productsService.AddProduct(product);
             return Ok();
         }
 
@@ -47,8 +47,8 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult DeleteProduct([FromQuery(Name = "ProductId")] int id)
         {
-            _productsBLL.RemoveProductById(id);
-            return Ok($"Remove product: {_productsBLL.AllProducts.FirstOrDefault(x => x.Id == id).Name}"); //TODO: FIX possible null reference issue
+            _productsService.DeleteProduct(id);
+            return Ok(); //TODO: FIX possible null reference issue --> --> --> FIXED
         }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult EditProduct([FromBody] Products product)
         {
-            _productsBLL.UpdateProduct(product);
-            return Ok($"Update product: {product.Name}");
+            _productsService.UpdateProduct(product);
+            return Ok();
         }
     }
 }
