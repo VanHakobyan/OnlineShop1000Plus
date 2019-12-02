@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace OnlineShop.Api.Helpers
+﻿namespace OnlineShop.Api.Helpers
 {
     public class EmailValidation
     {
@@ -11,8 +6,8 @@ namespace OnlineShop.Api.Helpers
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
+                var address = new System.Net.Mail.MailAddress(email);
+                return address.Address == email;
             }
             catch
             {
