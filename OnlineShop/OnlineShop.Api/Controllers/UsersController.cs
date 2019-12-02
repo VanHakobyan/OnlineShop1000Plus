@@ -87,7 +87,7 @@ namespace OnlineShop.Api.Controllers
         /// <returns>the user with the given username</returns>
         [HttpGet]
         [ProducesDefaultResponseType]
-        public IActionResult User([FromQuery(Name = "username")] string username)
+        public new IActionResult User([FromQuery(Name = "username")] string username)
         {
             var user = _usersService.GetUserByUsername(username);
             return Ok(user);

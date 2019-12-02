@@ -2,46 +2,42 @@
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
 using OnlineShop.Dal;
-using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
     public class AddressManagementBLL : IAddressManagementBLL
     {
-        OnlineShopDAL _onlineShopDAL;
-        IAddressManagementDAL _addressManagementDAL;
-
+        private readonly OnlineShopDAL _onlineShopDAL;
         public AddressManagementBLL()
         {
             _onlineShopDAL = new OnlineShopDAL();
-            _addressManagementDAL = _onlineShopDAL.AddressManagementDAL;
         }
-        public IEnumerable<Addresses> AllAddresses => _addressManagementDAL.AllAddresses;
+        public IEnumerable<Addresses> AllAddresses => _onlineShopDAL.AddressManagementDAL.AllAddresses;
 
         public void AddAddress(Addresses newAddress)
         {
-            _addressManagementDAL.AddAddress(newAddress);
+            _onlineShopDAL.AddressManagementDAL.AddAddress(newAddress);
         }
 
         public Addresses GetAddressById(int id)
         {
-            return _addressManagementDAL.GetAddressById(id);
+            return _onlineShopDAL.AddressManagementDAL.GetAddressById(id);
         }
 
         public Addresses GetAddressByUser(Users user)
         {
-            return _addressManagementDAL.GetAddressByUser(user);
+            return _onlineShopDAL.AddressManagementDAL.GetAddressByUser(user);
         }
 
         public void RemoveAddress(Addresses address)
         {
 
-            _addressManagementDAL.RemoveAddress(address);
+            _onlineShopDAL.AddressManagementDAL.RemoveAddress(address);
         }
 
         public void UpdateAddress(Addresses entity)
         {
-            _addressManagementDAL.UpdateAddress(entity);
+            _onlineShopDAL.AddressManagementDAL.UpdateAddress(entity);
         }
     }
 }

@@ -2,50 +2,46 @@
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
 using OnlineShop.Dal;
-using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
     public class ItemsManagementBLL : IItemsManagementBLL
     {
-        OnlineShopDAL _onlineShopDAL;
-        IItemsManagementDAL _itemsManagementDAL;
-
+        private readonly OnlineShopDAL _onlineShopDAL;
         public ItemsManagementBLL()
         {
             _onlineShopDAL = new OnlineShopDAL();
-            _itemsManagementDAL = _onlineShopDAL.ItemsManagementDAL;
         }
 
-        public IEnumerable<Items> AllItems => _itemsManagementDAL.AllItems;
+        public IEnumerable<Items> AllItems => _onlineShopDAL.ItemsManagementDAL.AllItems;
         public IEnumerable<Items> GetAllItemsByPage(int count, int page)
         {
-           return _itemsManagementDAL.GetAllItemsByPage(count, page);
+           return _onlineShopDAL.ItemsManagementDAL.GetAllItemsByPage(count, page);
         }
 
         public void AddItem(Items item)
         {
-            _itemsManagementDAL.AddItem(item);
+            _onlineShopDAL.ItemsManagementDAL.AddItem(item);
         }
 
         public Items GetItemById(int id)
         {
-            return _itemsManagementDAL.GetItemById(id);
+            return _onlineShopDAL.ItemsManagementDAL.GetItemById(id);
         }
 
         public void RemoveItemById(int id)
         {
-            _itemsManagementDAL.RemoveItemById(id);
+            _onlineShopDAL.ItemsManagementDAL.RemoveItemById(id);
         }
 
         public void UpdateItem(Items entity)
         {
-            _itemsManagementDAL.UpdateItem(entity);
+            _onlineShopDAL.ItemsManagementDAL.UpdateItem(entity);
         }
 
         public void RemoveItem(params Items[] items)
         {
-            _itemsManagementDAL.RemoveItems(items);
+            _onlineShopDAL.ItemsManagementDAL.RemoveItems(items);
         }
     }
 }

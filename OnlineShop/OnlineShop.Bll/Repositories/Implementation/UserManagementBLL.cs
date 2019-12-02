@@ -2,69 +2,65 @@
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
 using OnlineShop.Dal;
-using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Bll.Repositories.Implementation
 {
     public class UserManagementBLL : IUserManagementBLL
     {
-        OnlineShopDAL _onlineShopDAL;
-        IUserManagementDAL _userManagementDAL;
-
+        private readonly OnlineShopDAL _onlineShopDAL;
         public UserManagementBLL()
         {
             _onlineShopDAL = new OnlineShopDAL();
-            _userManagementDAL = _onlineShopDAL.UserManagementDAL;
         }
 
-        public IEnumerable<Users> AllUsers => _userManagementDAL.AllUsers;
+        public IEnumerable<Users> AllUsers => _onlineShopDAL.UserManagementDAL.AllUsers;
         public IEnumerable<Users> GetAllUsersByPage(int count, int page)
         {
-            return _userManagementDAL.GetAllUsersByPage(count, page);
+            return _onlineShopDAL.UserManagementDAL.GetAllUsersByPage(count, page);
         }
 
         public void AddUser(Users user)
         {
-            _userManagementDAL.AddUser(user);
+            _onlineShopDAL.UserManagementDAL.AddUser(user);
         }
 
         public Users GetUserByEmail(string email)
         {
-            return _userManagementDAL.GetUserByEmail(email);
+            return _onlineShopDAL.UserManagementDAL.GetUserByEmail(email);
         }
 
         public Users GetUserById(int id)
         {
-            return _userManagementDAL.GetUserById(id);
+            return _onlineShopDAL.UserManagementDAL.GetUserById(id);
         }
 
         public Users GetUserByUsername(string username)
         {
-            return _userManagementDAL.GetUserByUsername(username);
+            return _onlineShopDAL.UserManagementDAL.GetUserByUsername(username);
         }
 
         public bool SearchForEmail(string email)
         {
-            return _userManagementDAL.SearchForEmail(email);
+            return _onlineShopDAL.UserManagementDAL.SearchForEmail(email);
         }
         public bool SearchForUsername(string username)
         {
-            return _userManagementDAL.SearchForUsername(username);
+            return _onlineShopDAL.UserManagementDAL.SearchForUsername(username);
         }
 
         public void RemoveUser(Users user)
         {
-            _userManagementDAL.RemoveUser(user);
+            _onlineShopDAL.UserManagementDAL.RemoveUser(user);
         }
 
         public void RemoveUserById(int id)
         {
-            _userManagementDAL.RemoveUserById(id);
+            _onlineShopDAL.UserManagementDAL.RemoveUserById(id);
         }
 
         public void UpdateUser(Users entity)
         {
-            _userManagementDAL.UpdateUser(entity);
+            _onlineShopDAL.UserManagementDAL.UpdateUser(entity);
         }
     }
 }
