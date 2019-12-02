@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using OnlineShop.Common;
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Api.Services.Interfaces;
@@ -32,7 +29,6 @@ namespace OnlineShop.Api.Services.Classes
         public Items UpdateItem(int? color, int? size, int? quantity, string image)
         {
             var newItem = new Items { Color = color, Size = size, Quantity = quantity, Image = image };
-
             _itemsManagementBLL.UpdateItem(newItem);
 
             return newItem;

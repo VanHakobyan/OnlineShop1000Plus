@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using OnlineShop.Bll.Repositories.Implementation;
+﻿using System.Linq;
 using OnlineShop.Bll.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Common;
@@ -52,7 +48,7 @@ namespace OnlineShop.Api.Controllers
         public IActionResult DeleteProduct([FromQuery(Name = "ProductId")] int id)
         {
             _productsBLL.RemoveProductById(id);
-            return Ok($"Remove product: {_productsBLL.AllProducts.FirstOrDefault(x => x.Id == id).Name}");
+            return Ok($"Remove product: {_productsBLL.AllProducts.FirstOrDefault(x => x.Id == id).Name}"); //TODO: FIX possible null reference issue
         }
 
         /// <summary>

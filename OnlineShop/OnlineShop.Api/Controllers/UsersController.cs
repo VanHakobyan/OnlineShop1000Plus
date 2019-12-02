@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Common;
 using System.Collections.Generic;
@@ -100,7 +99,7 @@ namespace OnlineShop.Api.Controllers
         /// <returns>address</returns>
         ///<remarks>
         /// sample request (this request adds new address)\
-        /// POST  /users/adress\
+        /// POST  /users/address\
         /// {\
         ///     "Country" : "sampleCountry",\
         ///     "State" : "sampleState",\
