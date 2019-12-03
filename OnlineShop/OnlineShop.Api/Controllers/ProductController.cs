@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Common;
 using OnlineShop.Api.Services.Interfaces;
-using OnlineShop.Bll.Repositories.Implementation;
+using Serilog;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -22,12 +23,20 @@ namespace OnlineShop.Api.Controllers
         [HttpGet]
         public IActionResult Products([FromQuery(Name = "count")] int count, [FromQuery(Name = "page")] int page)
         {
-            var products = _productsService.GetProductsByPage(count, page);
-            if (products == null)
+            try
             {
-                return NotFound("No products available!");
+                var products = _productsService.GetProductsByPage(count, page);
+                if (products == null)
+                {
+                    return NotFound("No products available!");
+                }
+                return Ok(products);
             }
-            return Ok(products);
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ProductController.Products() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -39,12 +48,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult AddProduct([FromBody] Products product)
         {
-            _productsService.AddProduct(product);
-            if (product == null)
+            try
             {
-                return BadRequest("Product not specified!");
+                _productsService.AddProduct(product);
+                if (product == null)
+                {
+                    return BadRequest("Product not specified!");
+                }
+                return Ok();
             }
-            return Ok();
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ProductController.AddProduct() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -55,8 +72,16 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult DeleteProduct([FromQuery(Name = "ProductId")] int id)
         {
-            _productsService.DeleteProduct(id);
-            return Ok(); //TODO: FIX possible null reference issue --> --> --> FIXED
+            try
+            {
+                _productsService.DeleteProduct(id);
+                return Ok(); //TODO: FIX possible null reference issue --> --> --> FIXED
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ProductController.DeleteProduct() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -68,12 +93,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult EditProduct([FromBody] Products product)
         {
-            _productsService.UpdateProduct(product);
-            if (product == null)
+            try
             {
-                return BadRequest("New characteristics not specified!");
+                _productsService.UpdateProduct(product);
+                if (product == null)
+                {
+                    return BadRequest("New characteristics not specified!");
+                }
+                return Ok();
             }
-            return Ok();
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ProductController.EditProduct() method!");
+                return NotFound();
+            }
         }
     }
 }
