@@ -23,6 +23,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult Products([FromQuery(Name = "count")] int count, [FromQuery(Name = "page")] int page)
         {
             var products = _productsService.GetProductsByPage(count, page);
+            if (products == null)
+            {
+                return NotFound("No products available!");
+            }
             return Ok(products);
         }
 
@@ -36,6 +40,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult AddProduct([FromBody] Products product)
         {
             _productsService.AddProduct(product);
+            if (product == null)
+            {
+                return BadRequest("Product not specified!");
+            }
             return Ok();
         }
 
@@ -61,6 +69,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult EditProduct([FromBody] Products product)
         {
             _productsService.UpdateProduct(product);
+            if (product == null)
+            {
+                return BadRequest("New characteristics not specified!");
+            }
             return Ok();
         }
     }

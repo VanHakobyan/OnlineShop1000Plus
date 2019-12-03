@@ -38,5 +38,10 @@ namespace OnlineShop.Api.Services.Classes
         {
             return _itemsManagementBLL.GetAllItemsByPage(count, page);
         }
+
+        public bool SearchById(int id)
+        {
+            return _itemsManagementBLL.SearchById(id);
+        }
     }
 }

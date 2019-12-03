@@ -23,6 +23,14 @@ namespace OnlineShop.Api.Controllers
         public IActionResult CreateItem([FromBody] Items itemModel)
         {
             var item = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
+            if (item == null)
+            {
+                return BadRequest("Item not specified!");
+            }
+            else if (item.Quantity == 0)
+            {
+                return NoContent();
+            }
             return Ok(item);
         }
 
@@ -34,8 +42,12 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult RemoveItem([FromQuery(Name = "ItemId")] int id)
         {
-            _itemsService.DeleteItem(id);
-            return Ok();
+            if (_itemsService.SearchById(id))
+            {
+                _itemsService.DeleteItem(id);
+                return Ok();
+            }
+            return NotFound("Item not found"!);
         }
 
         /// <summary>
@@ -48,6 +60,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult EditItem([FromBody] Items itemModel)
         {
             var newItem = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
+            if (newItem == null)
+            {
+                return BadRequest("New characteristics not specified!");
+            }
             return Ok(newItem);
         }
 
@@ -62,6 +78,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult Items([FromQuery(Name ="count")] int count, [FromQuery(Name = "page")] int page)
         {
             IEnumerable<Items> items = _itemsService.GetAllItemsByPage(count, page);
+            if (items == null)
+            {
+                return NotFound("No items of the product found!");
+            }
             return Ok(items);
         }
     }

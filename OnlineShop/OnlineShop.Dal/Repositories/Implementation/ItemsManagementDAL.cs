@@ -44,5 +44,11 @@ namespace OnlineShop.Dal.Repositories.Implementation
             DbContext.Items.Update(entity);
             DbContext.SaveChanges();
         }
+
+        public bool SearchById(int id)
+        {
+            if(DbContext.Items.Any(x => x.Id == id)) return true;
+            return false;
+        }
     }
 }
