@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Common;
 using System.Collections.Generic;
+using OnlineShop.Api.Helpers;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -35,6 +36,14 @@ namespace OnlineShop.Api.Controllers
         public IActionResult Login([FromBody]AuthenticateModel model)
         {
             var user = _usersService.Authenticate(model.Email, model.Password);
+            if (user == null)
+            {
+                return BadRequest("Email and/or password missing!");
+            }
+            else if (EmailValidation.IsValidEmail(user.Email))
+            {
+                return BadRequest("Email not valid!");
+            }
             return Ok(user);
         }
 
@@ -62,6 +71,14 @@ namespace OnlineShop.Api.Controllers
         public IActionResult Register([FromBody]AuthorizeModel model)
         {
             var user = _usersService.Authorize(model.Username, model.Email, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
+            if (user == null)
+            {
+                return BadRequest("User not specified!");
+            }
+            else if (EmailValidation.IsValidEmail(user.Email))
+            {
+                return BadRequest("Email not valid!");
+            }
             return Ok(user);
         }
 
@@ -76,6 +93,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult Users([FromQuery(Name = "count")]int count, [FromQuery(Name = "page")]int page)
         {
             IEnumerable<Users> users = _usersService.GetAllUsersByPage(count, page);
+            if (users == null)
+            {
+                return NotFound("Users not found!");
+            }
             return Ok(users);
         }
 
@@ -89,6 +110,10 @@ namespace OnlineShop.Api.Controllers
         public new IActionResult User([FromQuery(Name = "username")] string username)
         {
             var user = _usersService.GetUserByUsername(username);
+            if (user == null)
+            {
+                return NotFound("User not found!");
+            }
             return Ok(user);
         }
 
@@ -114,6 +139,10 @@ namespace OnlineShop.Api.Controllers
         public IActionResult Address([FromBody] Addresses addressModel)
         {
             var address = _usersService.AddAddress(addressModel.Country, addressModel.State, addressModel.City, addressModel.Street, addressModel.Zip, addressModel.Phone);
+            if (address == null)
+            {
+                return BadRequest("Address not specified!");
+            }
             return Ok(address);
         }
     }
