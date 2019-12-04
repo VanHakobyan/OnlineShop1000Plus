@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Common;
+using Serilog;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -22,8 +24,24 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult CreateItem([FromBody] Items itemModel)
         {
-            var item = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
-            return Ok(item);
+            try
+            {
+                var item = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
+                if (item == null)
+                {
+                    return BadRequest("Item not specified!");
+                }
+                else if (item.Quantity == 0)
+                {
+                    return NoContent();
+                }
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ItemsController.CreateItem() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -34,8 +52,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult RemoveItem([FromQuery(Name = "ItemId")] int id)
         {
-            _itemsService.DeleteItem(id);
-            return Ok();
+            try
+            {
+                if (_itemsService.SearchById(id))
+                {
+                    _itemsService.DeleteItem(id);
+                    return Ok();
+                }
+                return NotFound("Item not found"!);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ItemsController.RemoveItem() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -47,8 +77,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult EditItem([FromBody] Items itemModel)
         {
-            var newItem = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
-            return Ok(newItem);
+            try
+            {
+                var newItem = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
+                if (newItem == null)
+                {
+                    return BadRequest("New characteristics not specified!");
+                }
+                return Ok(newItem);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ItemsController.EditItem() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -61,8 +103,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult Items([FromQuery(Name ="count")] int count, [FromQuery(Name = "page")] int page)
         {
-            IEnumerable<Items> items = _itemsService.GetAllItemsByPage(count, page);
-            return Ok(items);
+            try
+            {
+                IEnumerable<Items> items = _itemsService.GetAllItemsByPage(count, page);
+                if (items == null)
+                {
+                    return NotFound("No items of the product found!");
+                }
+                return Ok(items);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.ItemsController.Items() method!");
+                return NotFound();
+            }
         }
     }
 }

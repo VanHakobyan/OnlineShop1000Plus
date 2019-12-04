@@ -43,5 +43,10 @@ namespace OnlineShop.Bll.Repositories.Implementation
         {
             _onlineShopDAL.ItemsManagementDAL.RemoveItems(items);
         }
+
+        public bool SearchById(int id)
+        {
+            return _onlineShopDAL.ItemsManagementDAL.SearchById(id);
+        }
     }
 }

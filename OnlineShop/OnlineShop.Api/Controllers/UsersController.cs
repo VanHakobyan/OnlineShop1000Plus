@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using OnlineShop.Api.Services.Interfaces;
 using OnlineShop.Common;
 using System.Collections.Generic;
+using OnlineShop.Api.Helpers;
+using Serilog;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -34,8 +37,24 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult Login([FromBody]AuthenticateModel model)
         {
-            var user = _usersService.Authenticate(model.Email, model.Password);
-            return Ok(user);
+            try
+            {
+                var user = _usersService.Authenticate(model.Email, model.Password);
+                if (user == null)
+                {
+                    return BadRequest("Email and/or password missing!");
+                }
+                else if (EmailValidation.IsValidEmail(user.Email))
+                {
+                    return BadRequest("Email not valid!");
+                }
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.UsersController.Login() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -61,8 +80,24 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult Register([FromBody]AuthorizeModel model)
         {
-            var user = _usersService.Authorize(model.Username, model.Email, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
-            return Ok(user);
+            try
+            {
+                var user = _usersService.Authorize(model.Username, model.Email, model.FirstName, model.LastName, model.Password, model.ConfirmPassword);
+                if (user == null)
+                {
+                    return BadRequest("User not specified!");
+                }
+                else if (EmailValidation.IsValidEmail(user.Email))
+                {
+                    return BadRequest("Email not valid!");
+                }
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.UsersController.Register() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -72,11 +107,23 @@ namespace OnlineShop.Api.Controllers
         /// <param name="page">page number</param>
         /// <returns>all registered users</returns>
         [HttpGet]
-        [ProducesDefaultResponseType]
+        //[ProducesDefaultResponseType]
         public IActionResult Users([FromQuery(Name = "count")]int count, [FromQuery(Name = "page")]int page)
         {
-            IEnumerable<Users> users = _usersService.GetAllUsersByPage(count, page);
-            return Ok(users);
+            try
+            {
+                IEnumerable<Users> users = _usersService.GetAllUsersByPage(count, page);
+                if (users == null)
+                {
+                    return NotFound("Users not found!");
+                }
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.UsersController.Users() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -88,8 +135,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public new IActionResult User([FromQuery(Name = "username")] string username)
         {
-            var user = _usersService.GetUserByUsername(username);
-            return Ok(user);
+            try
+            {
+                var user = _usersService.GetUserByUsername(username);
+                if (user == null)
+                {
+                    return NotFound("User not found!");
+                }
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.UsersController.User() method!");
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -113,8 +172,20 @@ namespace OnlineShop.Api.Controllers
         [ProducesDefaultResponseType]
         public IActionResult Address([FromBody] Addresses addressModel)
         {
-            var address = _usersService.AddAddress(addressModel.Country, addressModel.State, addressModel.City, addressModel.Street, addressModel.Zip, addressModel.Phone);
-            return Ok(address);
+            try
+            {
+                var address = _usersService.AddAddress(addressModel.Country, addressModel.State, addressModel.City, addressModel.Street, addressModel.Zip, addressModel.Phone);
+                if (address == null)
+                {
+                    return BadRequest("Address not specified!");
+                }
+                return Ok(address);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.UsersController.Address() method!");
+                return NotFound();
+            }
         }
     }
 }

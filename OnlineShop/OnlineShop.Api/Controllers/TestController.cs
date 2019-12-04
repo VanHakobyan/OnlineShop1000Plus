@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
+using Serilog;
 
 namespace OnlineShop.Api.Controllers
 {
@@ -13,9 +14,24 @@ namespace OnlineShop.Api.Controllers
             _userManagementBLL = userManagementBLL;
         }
         
+        public void Logg()
+        {
+            HttpContext.Response.Redirect("http://localhost:5341/#/events",true);
+            //return RedirectToPage("http://localhost:5341/#/events");
+        }
+
         [HttpGet]
         public IActionResult Test()
         {
+            try
+            {
+                int a = 0;
+                int b = 5 / a;
+            }
+            catch(Exception ex)
+            {
+                Log.Logger.Error(ex, ex.Message);
+            }
             OnlineShopAlphaContext context = new OnlineShopAlphaContext();
             return Ok($"Test {DateTime.UtcNow}");
         }
@@ -25,7 +41,6 @@ namespace OnlineShop.Api.Controllers
         {
             _userManagementBLL.GetUserByEmail(email);
             return Ok();
-
         }
     }
 }
