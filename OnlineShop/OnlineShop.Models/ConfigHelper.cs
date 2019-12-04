@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Serilog;
 
 namespace OnlineShop
 {
@@ -10,7 +11,9 @@ namespace OnlineShop
         }
         public static string GetDefaultConnectionString()
         {
-            return ConfigurationManager.AppSettings["DefaultConnection"];
+            var appSetting = ConfigurationManager.AppSettings["DefaultConnection"];
+            Log.Logger.Information($"app config:{appSetting}");
+            return appSetting;
         }
     }
 }
