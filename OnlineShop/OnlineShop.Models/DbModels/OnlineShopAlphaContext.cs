@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace OnlineShop.Common
 {
@@ -21,9 +20,10 @@ namespace OnlineShop.Common
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-1E9TT7S\\SQL2019;Database=OnlineShopAlpha;Trusted_Connection=True;");
-                //optionsBuilder.UseSqlServer("Server=DESKTOP-EL9EH4N\\MSSQLSERVER02;Database=TestDB;Trusted_Connection=True;");
-                //optionsBuilder.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=TestDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(ConfigHelper.GetDefaultConnectionString()); //ISTC-SQL_Server
+                //optionsBuilder.UseSqlServer("Server=DESKTOP-1E9TT7S\\SQL2019;Database=OnlineShopAlpha;Trusted_Connection=True;"); // Tigran
+                //optionsBuilder.UseSqlServer("Server=DESKTOP-EL9EH4N\\MSSQLSERVER02;Database=TestDB;Trusted_Connection=True;"); //Lusine
+                //optionsBuilder.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=TestDB;Trusted_Connection=True;"); //Lusine
             }
         }
 
