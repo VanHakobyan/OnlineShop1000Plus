@@ -9,5 +9,6 @@ namespace OnlineShop.Api.Services.Interfaces
         IEnumerable<Products> GetProductsByPage(int count, int page);
         void DeleteProduct(int id);
         void UpdateProduct(Products entity);
+        Products GetById(int id);
     }
 }

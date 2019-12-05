@@ -21,6 +21,7 @@ namespace OnlineShop.Api.Controllers
         /// <param name="page">page number</param>
         /// <returns>all available products</returns>
         [HttpGet]
+        [ProducesDefaultResponseType]
         public IActionResult Products([FromQuery(Name = "count")] int count, [FromQuery(Name = "page")] int page)
         {
             try
@@ -68,12 +69,17 @@ namespace OnlineShop.Api.Controllers
         /// deletes existing product
         /// </summary>
         /// <param name="id">product id</param>
-        [HttpPost]
+        [HttpDelete]
         [ProducesDefaultResponseType]
         public IActionResult DeleteProduct([FromQuery(Name = "ProductId")] int id)
         {
             try
             {
+                var product = _productsService.GetById(id);
+                if (product == null)
+                {
+                    return NotFound("Product not found!");
+                }
                 _productsService.DeleteProduct(id);
                 return Ok(); //TODO: FIX possible null reference issue --> --> --> FIXED
             }

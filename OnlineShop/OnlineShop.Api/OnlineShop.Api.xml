@@ -17,12 +17,23 @@
             </summary>
             <param name="id">item id</param>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ItemsController.EditItem(OnlineShop.Common.Items)">
-            <summary>
-            updates item info
-            </summary>
-            <param name="itemModel">new item properties</param>
-            <returns>updated item</returns>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.EditItem(OnlineShop.Common.Items,System.Int32)">
+             <summary>
+             updates item info
+             </summary>
+             <param name="itemModel">new item properties</param>
+             <param name="itemId">id of the item to be edited</param>
+             <returns>updated item</returns>
+             <remarks>
+             sample request (this request adds new address)\
+             PUT  /items/edititem\
+             {\
+                 "Color" : "sampleColor",\
+                 "Size" : "sampleSize",\
+                 "Quantity" : "sampleQuantity",\
+                 "Image" : "sampleImage",\
+            }
+             </remarks>>
         </member>
         <member name="M:OnlineShop.Api.Controllers.ItemsController.Items(System.Int32,System.Int32)">
             <summary>
@@ -129,6 +140,46 @@
                  "Phone" : "samplePhone",
             }
              </remarks>>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Address(System.Int32)">
+            <summary>
+            gets the address by Id
+            </summary>
+            <param name="id">address Id</param>
+            <returns>address if found</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.UpdateAddress(System.Int32,OnlineShop.Common.Addresses)">
+             <summary>
+             updates existing address
+             </summary>
+             <param name="addressId">id of the address to be updated</param>
+             <param name="address">model for update info</param>
+             <remarks>
+             sample request (this request adds new address)\
+             PUT  /users/updateaddress\
+             {\
+                 "Country" : "sampleCountry",\
+                 "State" : "sampleState",\
+                 "City" : "sampleCity",\
+                 "Street" : "sampleStreet",\
+                 "Zip" : "sampleZip",\
+                 "Phone" : "samplePhone",
+            }
+             </remarks>>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.RemoveAddress(System.Int32)">
+            <summary>
+            deletes existing address
+            </summary>
+            <param name="id">id of the address to be deleted</param>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.UsersController.UpdateUserByAddress(System.Int32,System.Int32)">
+            <summary>
+            attched address to an existing user
+            </summary>
+            <param name="addressId">id of the address to be attached</param>
+            <param name="userId">id of the user of the address</param>
+            <returns>updated user with address Id</returns>
         </member>
     </members>
 </doc>

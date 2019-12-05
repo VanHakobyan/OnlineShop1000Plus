@@ -48,7 +48,7 @@ namespace OnlineShop.Api.Controllers
         /// deletes existing item
         /// </summary>
         /// <param name="id">item id</param>
-        [HttpPost]
+        [HttpDelete]
         [ProducesDefaultResponseType]
         public IActionResult RemoveItem([FromQuery(Name = "ItemId")] int id)
         {
@@ -72,19 +72,38 @@ namespace OnlineShop.Api.Controllers
         /// updates item info
         /// </summary>
         /// <param name="itemModel">new item properties</param>
+        /// <param name="itemId">id of the item to be edited</param>
         /// <returns>updated item</returns>
-        [HttpPost]
+        /// <remarks>
+        /// sample request (this request adds new address)\
+        /// PUT  /items/edititem\
+        /// {\
+        ///     "Color" : "sampleColor",\
+        ///     "Size" : "sampleSize",\
+        ///     "Quantity" : "sampleQuantity",\
+        ///     "Image" : "sampleImage",\
+        ///}
+        /// </remarks>>
+        [HttpPut]
         [ProducesDefaultResponseType]
-        public IActionResult EditItem([FromBody] Items itemModel)
+        public IActionResult EditItem([FromBody] Items itemModel, [FromQuery(Name = "itemId")] int itemId)
         {
             try
             {
-                var newItem = _itemsService.AddItem(itemModel.Color, itemModel.Size, itemModel.Quantity, itemModel.Image);
-                if (newItem == null)
+                var oldItem = _itemsService.GetById(itemId);
+                if (oldItem == null)
                 {
-                    return BadRequest("New characteristics not specified!");
+                    return BadRequest("Item not found!");
                 }
-                return Ok(newItem);
+                else if (itemModel == null)
+                {
+                    return BadRequest("Update info missing!");
+                }
+                oldItem.Color = itemModel.Color;
+                oldItem.Size = itemModel.Size;
+                oldItem.Quantity = itemModel.Quantity;
+                oldItem.Image = itemModel.Image;
+                return Ok();
             }
             catch (Exception ex)
             {

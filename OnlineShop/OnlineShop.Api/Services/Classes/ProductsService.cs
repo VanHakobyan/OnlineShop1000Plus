@@ -31,5 +31,10 @@ namespace OnlineShop.Api.Services.Classes
         {
             _productsManagementBLL.UpdateProduct(entity);
         }
+
+        public Products GetById(int id)
+        {
+            return _productsManagementBLL.GetProductById(id);
+        }
     }
 }

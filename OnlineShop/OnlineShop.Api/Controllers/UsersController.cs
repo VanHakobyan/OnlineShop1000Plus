@@ -222,7 +222,7 @@ namespace OnlineShop.Api.Controllers
         /// </summary>
         /// <param name="addressId">id of the address to be updated</param>
         /// <param name="address">model for update info</param>
-        ///  ///<remarks>
+        /// <remarks>
         /// sample request (this request adds new address)\
         /// PUT  /users/updateaddress\
         /// {\
@@ -244,6 +244,10 @@ namespace OnlineShop.Api.Controllers
                 if (oldAddress == null)
                 {
                     return BadRequest("Address not found!");
+                }
+                else if (address == null)
+                {
+                    return BadRequest("Update info missing!");
                 }
                 _usersService.UpdateAddress(oldAddress);
                 oldAddress.Country = address.Country;

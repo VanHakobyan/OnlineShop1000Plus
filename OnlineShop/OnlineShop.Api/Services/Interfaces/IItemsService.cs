@@ -10,5 +10,6 @@ namespace OnlineShop.Api.Services.Interfaces
         void DeleteItem(int id);
         Items UpdateItem(int? color, int? size, int? quantity, string image);
         bool SearchById(int id);
+        Items GetById(int id);
     }
 }

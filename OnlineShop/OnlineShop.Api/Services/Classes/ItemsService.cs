@@ -43,5 +43,10 @@ namespace OnlineShop.Api.Services.Classes
         {
             return _itemsManagementBLL.SearchById(id);
         }
+
+        public Items GetById(int id)
+        {
+            return _itemsManagementBLL.GetItemById(id);
+        }
     }
 }
