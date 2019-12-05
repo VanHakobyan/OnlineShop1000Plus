@@ -16,28 +16,28 @@ using OnlineShop.Api.Helpers;
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Bll.Repositories.Implementation;
 using OnlineShop.Common;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
-using Microsoft.Extensions.Logging.Debug;
 using Serilog;
 using Serilog.Events;
-using System.Threading;
 
 namespace OnlineShop.Api
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IConfigurationRoot ConfigurationRoot { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            ConfigurationRoot = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
         }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<OnlineShopAlphaContext>(options => options.UseSqlServer("DESKTOP-1E9TT7S\\SQL2019"/*Configuration.GetConnectionString("DefaultConnection")*/));
+            services.AddDbContext<OnlineShopAlphaContext>(options => options.UseSqlServer(ConfigurationRoot.GetValue<string>("DefaultConnection")));
             services.AddControllers();
 
             var appSettingsSection = Configuration.GetSection("JwtSettings");
@@ -136,8 +136,8 @@ namespace OnlineShop.Api
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel
                 .Verbose()
-                .WriteTo.RollingFile("Log-{Date}.txt", LogEventLevel.Verbose)
-                .WriteTo.Seq("http://localhost:5341/#/events", LogEventLevel.Verbose)
+                .WriteTo.RollingFile($"{Environment.CurrentDirectory}\\Log\\{DateTime.Today.Year}\\Log.log", LogEventLevel.Verbose)
+                .WriteTo.Seq(serverUrl: ConfigurationRoot.GetValue<string>("SeqServerUrl"), LogEventLevel.Verbose)
                 .CreateLogger();
 
         }

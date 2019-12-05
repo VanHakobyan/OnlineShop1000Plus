@@ -50,7 +50,7 @@ namespace OnlineShop.Api.Controllers
         {
             try
             {
-                _productsService.AddProduct(product);
+                _productsService.AddProduct(product.Name, product.Description, product.CategoryId, product.Price);
                 if (product == null)
                 {
                     return BadRequest("Product not specified!");

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace OnlineShop.Common
 {
@@ -17,12 +18,14 @@ namespace OnlineShop.Common
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var defaultConnection = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build()
+                .GetValue<string>("DefaultConnection");
+
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseSqlServer("Server=DESKTOP-1E9TT7S\\SQL2019;Database=OnlineShopAlpha;Trusted_Connection=True;");
-                //optionsBuilder.UseSqlServer(ConfigHelper.GetDefaultConnectionString());
-                //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TestDB;Trusted_Connection=True");
-                optionsBuilder.UseSqlServer("Server=WIN-R4SM9H7QTBK;Database=TestDB;Trusted_Connection=True");
+                optionsBuilder.UseSqlServer(defaultConnection);
             }
         }
 

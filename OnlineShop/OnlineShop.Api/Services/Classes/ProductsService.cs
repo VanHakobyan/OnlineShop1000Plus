@@ -12,9 +12,9 @@ namespace OnlineShop.Api.Services.Classes
         {
             _productsManagementBLL = productManagementBLL;
         }
-        public void AddProduct(Products product)
+        public void AddProduct(string name, string description, int? categoryId, decimal? price)
         {
-            _productsManagementBLL.AddProduct(product);
+            _productsManagementBLL.AddProduct(new Products { Name = name, Description = description, CategoryId = categoryId, Price = price});
         }
 
         public void DeleteProduct(int id)

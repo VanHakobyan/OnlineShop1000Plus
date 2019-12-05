@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Bll.Repositories.Interfaces;
+using Microsoft.Extensions.Configuration;
 using OnlineShop.Common;
 using Serilog;
 
@@ -10,15 +10,19 @@ namespace OnlineShop.Api.Controllers
 {
     public class TestController : CustomBaseController
     {
-      
+        [HttpGet]
         public void Logg()
         {
-            HttpContext.Response.Redirect("http://localhost:5341/#/events", true);
-            //return RedirectToPage("http://localhost:5341/#/events");
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            HttpContext.Response.Redirect(configuration.GetValue<string>("SeqServerUrl"), true);
         }
 
         [HttpGet]
         public IActionResult Test()
+        
         {
             int? email = -1;
             try
@@ -31,7 +35,11 @@ namespace OnlineShop.Api.Controllers
                 Log.Logger.Error(ex, ex.Message);
             }
 
-            return Ok($"Test {DateTime.UtcNow}, Email:{email}");
+
+            var configuration = new ConfigurationBuilder()
+               .AddJsonFile("appsettings.json")
+               .Build();
+            return Ok($"Test {DateTime.UtcNow}, Email:{email}, SeqServerUrl: {configuration.GetValue<string>("SeqServerUrl")}");
         }
 
 
@@ -41,6 +49,6 @@ namespace OnlineShop.Api.Controllers
             return Ok($"Test {DateTime.UtcNow}");
         }
 
-      
+
     }
 }

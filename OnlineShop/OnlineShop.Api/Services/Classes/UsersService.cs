@@ -64,7 +64,7 @@ namespace OnlineShop.Api.Services.Classes
             if (string.IsNullOrWhiteSpace(email) )
                 throw new AppExceptions("Email is required");
 
-            if (!_userManagementBLL.SearchForEmail(email))
+            if (_userManagementBLL.SearchForEmail(email))
                 throw new AppExceptions($"Email \"{email}\" is already taken");
 
             if (!EmailValidation.IsValidEmail(email))
