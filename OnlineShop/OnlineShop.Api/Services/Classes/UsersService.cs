@@ -115,6 +115,11 @@ namespace OnlineShop.Api.Services.Classes
             return _userManagementBLL.GetUserByUsername(username);
         }
 
+        public Users GetUserById(int id)
+        {
+            return _userManagementBLL.GetUserById(id);
+        }
+
         // add a new address
         public Addresses AddAddress(string country, string state, string city, string street, string zip, string phone)
         {
@@ -147,6 +152,22 @@ namespace OnlineShop.Api.Services.Classes
             _addressManagementBLL.AddAddress(address);
 
             return address;
+        }
+
+        public Addresses GetAddressById(int id)
+        {
+            return _addressManagementBLL.GetAddressById(id);
+        }
+
+        public void UpdateAddress(Addresses entity)
+        {
+            _addressManagementBLL.UpdateAddress(entity);
+        }
+
+        public void RemoveAddress(int id)
+        {
+            var address = _addressManagementBLL.GetAddressById(id);
+            _addressManagementBLL.RemoveAddress(address);
         }
     }
 }

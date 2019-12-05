@@ -25,7 +25,8 @@ namespace OnlineShop.Common
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(defaultConnection);
+                //optionsBuilder.UseSqlServer(defaultConnection);
+                optionsBuilder.UseSqlServer("Server=DESKTOP-EL9EH4N\\MSSQLSERVER02;Database=TestDB;Trusted_Connection=True;");
             }
         }
 

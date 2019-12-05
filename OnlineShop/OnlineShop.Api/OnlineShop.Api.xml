@@ -111,7 +111,7 @@
             <param name="username">the username to search by</param>
             <returns>the user with the given username</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.UsersController.Address(OnlineShop.Common.Addresses)">
+        <member name="M:OnlineShop.Api.Controllers.UsersController.AddAddress(OnlineShop.Common.Addresses)">
              <summary>
              adds an address for a registered user
              </summary>

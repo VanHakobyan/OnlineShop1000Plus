@@ -10,7 +10,11 @@ namespace OnlineShop.Api.Services.Interfaces
 
         IEnumerable<Users> GetAllUsersByPage(int count, int page);
         Users GetUserByUsername(string username);
+        Users GetUserById(int id);
 
         Addresses AddAddress(string country, string state, string city, string street, string zip, string phone);
+        Addresses GetAddressById(int id);
+        void UpdateAddress(Addresses entity);
+        void RemoveAddress(int id);
     }
 }
