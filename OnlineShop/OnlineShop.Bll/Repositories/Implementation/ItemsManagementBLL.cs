@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Common;
 using OnlineShop.Dal;
@@ -10,7 +11,7 @@ namespace OnlineShop.Bll.Repositories.Implementation
         private readonly OnlineShopDAL _onlineShopDAL;
         public ItemsManagementBLL()
         {
-            _onlineShopDAL = new OnlineShopDAL();
+            _onlineShopDAL = new OnlineShopDAL(new DbContextOptions<OnlineShopAlphaContext>());
         }
 
         public IEnumerable<Items> AllItems => _onlineShopDAL.ItemsManagementDAL.AllItems;
