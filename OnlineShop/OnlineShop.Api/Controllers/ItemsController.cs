@@ -33,7 +33,7 @@ namespace OnlineShop.Api.Controllers
                 }
                 else if (item.Quantity == 0)
                 {
-                    return NoContent();
+                    return NotFound("Item expired!");
                 }
                 return Ok(item);
             }

@@ -4,6 +4,56 @@
         <name>OnlineShop.Api</name>
     </assembly>
     <members>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.Categories(System.Int32,System.Int32)">
+            <summary>
+            gets all categories
+            </summary>
+            <param name="count">count of categories per page</param>
+            <param name="page">page number</param>
+            <returns>all existing categories</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.Category(System.Int32)">
+            <summary>
+            gets a category by Id
+            </summary>
+            <param name="id">id of the category</param>
+            <returns>the category, if exists</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.AddCategory(OnlineShop.Common.Categories)">
+             <summary>
+             adds a category
+             </summary>
+             <param name="categoryModel">category model for add</param>
+             <remarks>
+             sample request (this request adds new address)\
+             POST  /category/addcategory\
+             {\
+                 "Name" : "sampleName",\
+            }
+             </remarks>>
+             <returns>added category</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.UpdateCategory(OnlineShop.Common.Categories,System.Int32)">
+             <summary>
+             updates existing category
+             </summary>
+             <param name="newCategoryModel">new info to update</param>
+             <param name="oldId">id of the category to be updated</param>
+             <remarks>
+             sample request (this request adds new address)\
+             PUT  /category/updatecategory\
+             {\
+                 "Name" : "sampleName",\
+            }
+             </remarks>>
+             <returns>updated category</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.RemoveCategory(System.Int32)">
+            <summary>
+            removes a category by Id
+            </summary>
+            <param name="id">id of the category to be removed</param>
+        </member>
         <member name="M:OnlineShop.Api.Controllers.ItemsController.CreateItem(OnlineShop.Common.Items)">
             <summary>
             creates an item of a product

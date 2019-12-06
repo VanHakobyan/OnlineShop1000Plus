@@ -30,5 +30,8 @@ namespace OnlineShop.Dal
 
         private IAddressManagementDAL _addressManagementDAL;
         public IAddressManagementDAL AddressManagementDAL => _addressManagementDAL ?? (_addressManagementDAL = new AddressManagementDAL(DbContext));
+
+        private ICategoryManagementDAL _categoryManagementDAL;
+        public ICategoryManagementDAL categoryManagementDAL => _categoryManagementDAL ?? (_categoryManagementDAL = new CategoryManagementDAL(DbContext));
     }
 }
