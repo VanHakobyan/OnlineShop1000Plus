@@ -12,10 +12,11 @@ namespace OnlineShop.Dal.Repositories.Implementation
 
         public IEnumerable<Products> AllProducts => DbContext.Products.AsEnumerable();
 
-        public void AddProduct(Products product)
+        public Products AddProduct(Products product)
         {
             DbContext.Products.Add(product);
             DbContext.SaveChanges();
+            return product;
         }
 
         public Products GetProductById(int id)
@@ -33,6 +34,11 @@ namespace OnlineShop.Dal.Repositories.Implementation
             return AllProducts.Skip((page - 1) * count).Take(count);
         }
 
+        public IEnumerable<Products> GetProductsByPageInCategory(int count, int page, int categoryId)
+        {
+            return AllProducts.Where(x => x.CategoryId == categoryId).Skip((page - 1) * count).Take(count);
+        }
+
         public void RemoveProduct(params Products[] product)
         {
             DbContext.Products.RemoveRange(product as IEnumerable<Products>);
@@ -45,10 +51,14 @@ namespace OnlineShop.Dal.Repositories.Implementation
             DbContext.SaveChanges();
         }
 
-        public void UpdateProduct(Products entity)
+        public Products UpdateProduct(Products oldProduct, Products newProduct)
         {
-            DbContext.Products.Update(entity);
+            oldProduct.Name = newProduct.Name;
+            oldProduct.Description = newProduct.Description;
+            oldProduct.CategoryId = newProduct.CategoryId;
+            oldProduct.Price = newProduct.Price;
             DbContext.SaveChanges();
+            return newProduct;
         }
     }
 }

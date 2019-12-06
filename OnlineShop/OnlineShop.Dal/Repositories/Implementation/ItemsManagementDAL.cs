@@ -16,10 +16,16 @@ namespace OnlineShop.Dal.Repositories.Implementation
             return AllItems.Skip((page - 1) * count).Take(count);
         }
 
-        public void AddItem(Items item)
+        public IEnumerable<Items> GetAllItemsOfProductByPage(int count, int page, int productId)
+        {
+            return AllItems.Where(x => x.ProductId == productId).Skip((page - 1) * count).Take(count);
+        }
+
+        public Items AddItem(Items item)
         {
             DbContext.Items.Add(item);
             DbContext.SaveChanges();
+            return item;
         }
 
         public Items GetItemById(int id)
@@ -39,10 +45,15 @@ namespace OnlineShop.Dal.Repositories.Implementation
             DbContext.SaveChanges();
         }
 
-        public void UpdateItem(Items entity)
+        public Items UpdateItem(Items oldItem, Items newItem)
         {
-            DbContext.Items.Update(entity);
+            oldItem.ProductId = newItem.ProductId;
+            oldItem.Color = newItem.Color;
+            oldItem.Size = newItem.Size;
+            oldItem.Quantity = newItem.Quantity;
+            oldItem.Image = newItem.Image;
             DbContext.SaveChanges();
+            return newItem;
         }
 
         public bool SearchById(int id)

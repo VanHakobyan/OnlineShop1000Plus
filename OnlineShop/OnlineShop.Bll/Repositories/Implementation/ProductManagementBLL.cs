@@ -16,9 +16,9 @@ namespace OnlineShop.Bll.Repositories.Implementation
 
         public IEnumerable<Products> AllProducts => _onlineShopDAL.ProductManagementDAL.AllProducts;
 
-        public void AddProduct(Products product)
+        public Products AddProduct(Products product)
         {
-            _onlineShopDAL.ProductManagementDAL.AddProduct(product);
+            return _onlineShopDAL.ProductManagementDAL.AddProduct(product);
         }
 
         public Products GetProductById(int id)
@@ -36,6 +36,11 @@ namespace OnlineShop.Bll.Repositories.Implementation
             return _onlineShopDAL.ProductManagementDAL.GetProductsByPage(count, page);
         }
 
+        public IEnumerable<Products> GetProductsByPageInCategory(int count, int page, int categoryId)
+        {
+            return _onlineShopDAL.ProductManagementDAL.GetProductsByPageInCategory(count, page, categoryId);
+        }
+
         public void RemoveProduct(params Products[] products)
         {
             _onlineShopDAL.ProductManagementDAL.RemoveProduct(products);
@@ -46,9 +51,9 @@ namespace OnlineShop.Bll.Repositories.Implementation
             _onlineShopDAL.ProductManagementDAL.RemoveProductById(id);
         }
 
-        public void UpdateProduct(Products entity)
+        public Products UpdateProduct(Products oldProduct, Products newProduct)
         {
-            _onlineShopDAL.ProductManagementDAL.UpdateProduct(entity);
+            return _onlineShopDAL.ProductManagementDAL.UpdateProduct(oldProduct, newProduct);
         }
     }
 }

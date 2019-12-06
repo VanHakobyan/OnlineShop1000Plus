@@ -12,9 +12,9 @@ namespace OnlineShop.Api.Services.Classes
         {
             _itemsManagementBLL = itemsManagementBLL;
         }
-        public Items AddItem(int? color, int? size, int? quantity, string image)
+        public Items AddItem(int? prodId, int? color, int? size, int? quantity, string image)
         {
-            var item = new Items { Color = color, Size = size, Quantity = quantity, Image = image };
+            var item = new Items { ProductId = prodId, Color = color, Size = size, Quantity = quantity, Image = image };
 
             _itemsManagementBLL.AddItem(item);
 
@@ -26,12 +26,9 @@ namespace OnlineShop.Api.Services.Classes
             _itemsManagementBLL.RemoveItemById(id);
         }
 
-        public Items UpdateItem(int? color, int? size, int? quantity, string image)
+        public Items UpdateItem(Items oldItem, Items newItem)
         {
-            var newItem = new Items { Color = color, Size = size, Quantity = quantity, Image = image };
-            _itemsManagementBLL.UpdateItem(newItem);
-
-            return newItem;
+            return _itemsManagementBLL.UpdateItem(oldItem, newItem);
         }
 
         public IEnumerable<Items> GetAllItemsByPage(int count, int page)
@@ -39,6 +36,10 @@ namespace OnlineShop.Api.Services.Classes
             return _itemsManagementBLL.GetAllItemsByPage(count, page);
         }
 
+        public IEnumerable<Items> GetAllItemsOfProductByPage(int count, int page, int productId)
+        {
+            return _itemsManagementBLL.GetAllItemsOfProductByPage(count, page, productId);
+        }
         public bool SearchById(int id)
         {
             return _itemsManagementBLL.SearchById(id);

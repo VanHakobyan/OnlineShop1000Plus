@@ -12,9 +12,9 @@ namespace OnlineShop.Api.Services.Classes
         {
             _productsManagementBLL = productManagementBLL;
         }
-        public void AddProduct(string name, string description, int? categoryId, decimal? price)
+        public Products AddProduct(string name, string description, int? categoryId, decimal? price)
         {
-            _productsManagementBLL.AddProduct(new Products { Name = name, Description = description, CategoryId = categoryId, Price = price});
+            return _productsManagementBLL.AddProduct(new Products { Name = name, Description = description, CategoryId = categoryId, Price = price});
         }
 
         public void DeleteProduct(int id)
@@ -27,9 +27,14 @@ namespace OnlineShop.Api.Services.Classes
             return _productsManagementBLL.GetProductsByPage(count, page);
         }
 
-        public void UpdateProduct(Products entity)
+        public IEnumerable<Products> GetProductsByPageInCategory(int count, int page, int categoryId)
         {
-            _productsManagementBLL.UpdateProduct(entity);
+            return _productsManagementBLL.GetProductsByPageInCategory(count, page, categoryId);
+        }
+
+        public Products UpdateProduct(Products oldProduct, Products newProduct)
+        {
+            return _productsManagementBLL.UpdateProduct(oldProduct, newProduct);
         }
 
         public Products GetById(int id)
