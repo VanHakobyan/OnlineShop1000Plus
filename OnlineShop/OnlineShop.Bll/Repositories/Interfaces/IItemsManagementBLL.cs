@@ -6,16 +6,17 @@ namespace OnlineShop.Bll.Repositories.Interfaces
     public interface IItemsManagementBLL
     {
         //Create
-        void AddItem(Items item);
+        Items AddItem(Items item);
 
         //Read
         IEnumerable<Items> AllItems { get; }
         IEnumerable<Items> GetAllItemsByPage(int count, int page);
+        IEnumerable<Items> GetAllItemsOfProductByPage(int count, int page, int productId);
         Items GetItemById(int id);
         bool SearchById(int id);
 
         //Update
-        void UpdateItem(Items entity);
+        Items UpdateItem(Items oldItem, Items newItem);
 
         //Delete
         void RemoveItem(params Items[] items);

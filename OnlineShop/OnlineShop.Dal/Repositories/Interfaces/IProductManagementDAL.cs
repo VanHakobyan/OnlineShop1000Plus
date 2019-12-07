@@ -6,16 +6,17 @@ namespace OnlineShop.Dal.Repositories.Interfaces
     public interface IProductManagementDAL
     {
         //Create
-        void AddProduct(Products product);
+        Products AddProduct(Products product);
 
         //Read
         IEnumerable<Products> AllProducts { get; }
         Products GetProductById(int id);
-        Products  GetProductByName(string name);
+        Products GetProductByName(string name);
         IEnumerable<Products> GetProductsByPage(int count, int page);
+        IEnumerable<Products> GetProductsByPageInCategory(int count, int page, int categoryId);
 
         //Update
-        void UpdateProduct(Products entity);
+        Products UpdateProduct(Products oldProduct, Products newProduct);
 
         //Delete
         void RemoveProduct(params Products[] product);

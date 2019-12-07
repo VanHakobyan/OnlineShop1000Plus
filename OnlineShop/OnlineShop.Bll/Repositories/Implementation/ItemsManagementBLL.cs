@@ -20,9 +20,14 @@ namespace OnlineShop.Bll.Repositories.Implementation
            return _onlineShopDAL.ItemsManagementDAL.GetAllItemsByPage(count, page);
         }
 
-        public void AddItem(Items item)
+        public IEnumerable<Items> GetAllItemsOfProductByPage(int count, int page, int productId)
         {
-            _onlineShopDAL.ItemsManagementDAL.AddItem(item);
+            return _onlineShopDAL.ItemsManagementDAL.GetAllItemsOfProductByPage(count, page, productId);
+        }
+
+        public Items AddItem(Items item)
+        {
+            return _onlineShopDAL.ItemsManagementDAL.AddItem(item);
         }
 
         public Items GetItemById(int id)
@@ -35,9 +40,9 @@ namespace OnlineShop.Bll.Repositories.Implementation
             _onlineShopDAL.ItemsManagementDAL.RemoveItemById(id);
         }
 
-        public void UpdateItem(Items entity)
+        public Items UpdateItem(Items oldItem, Items newItem)
         {
-            _onlineShopDAL.ItemsManagementDAL.UpdateItem(entity);
+           return _onlineShopDAL.ItemsManagementDAL.UpdateItem(oldItem, newItem);
         }
 
         public void RemoveItem(params Items[] items)

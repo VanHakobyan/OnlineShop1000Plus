@@ -5,10 +5,11 @@ namespace OnlineShop.Api.Services.Interfaces
 {
     public interface IItemsService
     {
-        Items AddItem(int? color, int? size, int? quantity, string image);
+        Items AddItem(int? prodId, int? color, int? size, int? quantity, string image);
         IEnumerable<Items> GetAllItemsByPage(int count, int page);
+        IEnumerable<Items> GetAllItemsOfProductByPage(int count, int page, int productId);
         void DeleteItem(int id);
-        Items UpdateItem(int? color, int? size, int? quantity, string image);
+        Items UpdateItem(Items oldItem, Items newItem);
         bool SearchById(int id);
         Items GetById(int id);
     }

@@ -4,18 +4,96 @@
         <name>OnlineShop.Api</name>
     </assembly>
     <members>
-        <member name="M:OnlineShop.Api.Controllers.ItemsController.CreateItem(OnlineShop.Common.Items)">
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.Categories(System.Int32,System.Int32)">
             <summary>
-            creates an item of a product
+            gets all categories
             </summary>
-            <param name="itemModel">item specific properties</param>
-            <returns>new item</returns>
+            <param name="count">count of categories per page</param>
+            <param name="page">page number</param>
+            <returns>all existing categories</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ItemsController.RemoveItem(System.Int32)">
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.Category(System.Int32)">
             <summary>
-            deletes existing item
+            gets a category by Id
             </summary>
-            <param name="id">item id</param>
+            <param name="id">id of the category</param>
+            <returns>the category, if exists</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.AddCategory(OnlineShop.Common.Categories)">
+             <summary>
+             adds a category
+             </summary>
+             <param name="categoryModel">category model for add</param>
+             <remarks>
+             sample request (this request adds new address)\
+             POST  /category/addcategory\
+             {\
+                 "Name" : "sampleName",\
+            }
+             </remarks>>
+             <returns>added category</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.UpdateCategory(OnlineShop.Common.Categories,System.Int32)">
+             <summary>
+             updates existing category
+             </summary>
+             <param name="newCategoryModel">new info to update</param>
+             <param name="oldId">id of the category to be updated</param>
+             <remarks>
+             sample request (this request adds new address)\
+             PUT  /category/updatecategory\
+             {\
+                 "Name" : "sampleName",\
+            }
+             </remarks>>
+             <returns>updated category</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.RemoveCategory(System.Int32)">
+            <summary>
+            removes a category by Id
+            </summary>
+            <param name="id">id of the category to be removed</param>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.Items(System.Int32,System.Int32)">
+            <summary>
+            gets all items
+            </summary>
+            <param name="count">count of items per page</param>
+            <param name="page">page number</param>
+            <returns>all available items</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.ItemsOfProduct(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            gets all items of the specific product
+            </summary>
+            <param name="count">count of items per page</param>
+            <param name="page">page number</param>
+            <param name="prodId">id of the product</param>
+            <returns>all available items of the product</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.Item(System.Int32)">
+            <summary>
+            gets an item by Id
+            </summary>
+            <param name="id">id of the item</param>
+            <returns>item, if exists</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.CreateItem(OnlineShop.Common.Items)">
+             <summary>
+             adds a new item
+             </summary>
+             <param name="itemModel">item info model</param>
+             <remarks>
+             POST  /items/createitem\
+             {\
+                 "ProductId" : "sampleProductId"\
+                 "Color" : "sampleColor",\
+                 "Size" : "sampleSize",\
+                 "Quantity" : "sampleQuantity",\
+                 "Image" : "sampleImage",\
+            }
+             </remarks>
+             <returns>created item</returns>
         </member>
         <member name="M:OnlineShop.Api.Controllers.ItemsController.EditItem(OnlineShop.Common.Items,System.Int32)">
              <summary>
@@ -28,48 +106,84 @@
              sample request (this request adds new address)\
              PUT  /items/edititem\
              {\
+                 "ProductId" : "sampleProductId"\    
                  "Color" : "sampleColor",\
                  "Size" : "sampleSize",\
                  "Quantity" : "sampleQuantity",\
                  "Image" : "sampleImage",\
             }
-             </remarks>>
+             </remarks>
+             <returns>updated item</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ItemsController.Items(System.Int32,System.Int32)">
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.RemoveItem(System.Int32)">
             <summary>
-            gets all available items of a product
+            deletes existing item
             </summary>
-            <param name="count">count of items per page</param>
-            <param name="page">page number</param>
-            <returns>all available items</returns>
+            <param name="id">id of the item to be deleted</param>
         </member>
         <member name="M:OnlineShop.Api.Controllers.ProductController.Products(System.Int32,System.Int32)">
             <summary>
-            gets all products in the given category
+            gets all products
             </summary>
             <param name="count">count of products per page</param>
             <param name="page">page number</param>
             <returns>all available products</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ProductController.AddProduct(OnlineShop.Common.Products)">
+        <member name="M:OnlineShop.Api.Controllers.ProductController.ProductsInCategory(System.Int32,System.Int32,System.Int32)">
             <summary>
-            adds new product
+            get all products in the selected category
             </summary>
-            <param name="product">product specific properties</param>
-            <returns>new product</returns>
+            <param name="count">count of products per page</param>
+            <param name="page">page number</param>
+            <param name="catId">id of the category selected</param>
+            <returns>all available products in the category</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.Product(System.Int32)">
+            <summary>
+            gets a product by id
+            </summary>
+            <param name="id">id of the product</param>
+            <returns>the produxt, if exists</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.AddProduct(OnlineShop.Common.Products)">
+             <summary>
+             adds new product
+             </summary>
+             <param name="product">product specific properties</param>
+             <remarks>
+             sample request (this request adds new address)\
+             POST  /product/addproduct\
+             {\
+                 "Name" : "sampleName",\
+                 "Description" : "sampleDescription",\
+                 "CategoryId" : "sampleCategoryId",\
+                 "Price" : "samplePrice",\
+            }
+             </remarks>>
+             <returns>new product</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.ProductController.EditProduct(OnlineShop.Common.Products,System.Int32)">
+             <summary>
+             updated the product
+             </summary>
+             <param name="product">update info model</param>
+             <param name="oldId">idof the product to be updated</param>
+             <remarks>
+             PUT  /product/editproduct\
+             {\
+                 "Name" : "sampleName",\
+                 "Description" : "sampleDescription",\
+                 "CategoryId" : "sampleCategoryId",\
+                 "Price" : "samplePrice",\
+            }
+             </remarks>
+             <returns>updated product</returns>
         </member>
         <member name="M:OnlineShop.Api.Controllers.ProductController.DeleteProduct(System.Int32)">
             <summary>
-            deletes existing product
+            deletes existing product by Id
             </summary>
             <param name="id">product id</param>
-        </member>
-        <member name="M:OnlineShop.Api.Controllers.ProductController.EditProduct(OnlineShop.Common.Products)">
-            <summary>
-            updated product info
-            </summary>
-            <param name="product">new product properties</param>
-            <returns>updated product</returns>
         </member>
         <member name="M:OnlineShop.Api.Controllers.UsersController.Login(OnlineShop.Common.AuthenticateModel)">
              <summary>
