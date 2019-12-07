@@ -10,7 +10,7 @@ namespace OnlineShop.Api.Controllers
 {
     public class TestController : CustomBaseController
     {
-        [HttpGet]
+        //[HttpGet]
         public void Logg()
         {
             var configuration = new ConfigurationBuilder()
@@ -20,7 +20,7 @@ namespace OnlineShop.Api.Controllers
             HttpContext.Response.Redirect(configuration.GetValue<string>("SeqServerUrl"), true);
         }
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Test()
         
         {
@@ -43,7 +43,7 @@ namespace OnlineShop.Api.Controllers
         }
 
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Test1()
         {
             return Ok($"Test {DateTime.UtcNow}");

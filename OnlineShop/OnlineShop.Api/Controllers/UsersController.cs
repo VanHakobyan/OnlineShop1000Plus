@@ -67,8 +67,8 @@ namespace OnlineShop.Api.Controllers
         /// sample request (this request registers new user)\
         /// POST  /users/register\
         /// {\
-        ///     "Email" : "sampleEmail",\
         ///     "Username" : "sampleUsername",\
+        ///     "Email" : "sampleEmail",\
         ///     "FirstName" : "sampleFirstName",\
         ///     "LastName" : "sampleLastName",\
         ///     "Password" : "samplePassword",\
