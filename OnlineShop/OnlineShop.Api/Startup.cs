@@ -18,6 +18,8 @@ using OnlineShop.Bll.Repositories.Implementation;
 using OnlineShop.Common;
 using Serilog;
 using Serilog.Events;
+using System.Net;
+using System.Linq;
 
 namespace OnlineShop.Api
 {
@@ -139,6 +141,11 @@ namespace OnlineShop.Api
                 .WriteTo.RollingFile($"{Environment.CurrentDirectory}\\Log\\{DateTime.Today.Year}\\Log.log", LogEventLevel.Verbose)
                 .WriteTo.Seq(serverUrl: ConfigurationRoot.GetValue<string>("SeqServerUrl"), LogEventLevel.Verbose)
                 .CreateLogger();
+
+
+            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+            Log.Logger.Information(host.AddressList.FirstOrDefault(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString());
 
         }
     }

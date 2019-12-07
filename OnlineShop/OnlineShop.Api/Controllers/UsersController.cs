@@ -87,7 +87,7 @@ namespace OnlineShop.Api.Controllers
                 {
                     return BadRequest("User not specified!");
                 }
-                else if (EmailValidation.IsValidEmail(user.Email))
+                else if (!EmailValidation.IsValidEmail(user.Email))
                 {
                     return BadRequest("Email not valid!");
                 }
