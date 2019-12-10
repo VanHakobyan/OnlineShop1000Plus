@@ -100,5 +100,80 @@ namespace OnlineShop.Api.Controllers
                 return NotFound();
             }
         }
+
+        /// <summary>
+        /// shows order history of the user
+        /// </summary>
+        /// <param name="userid">id of the user</param>
+        /// <returns>order history, if available</returns>
+        [HttpGet]
+        [ProducesDefaultResponseType]
+        public IActionResult OrderHistory([FromQuery(Name = "userId")] int userid)
+        {
+            try
+            {
+                var ordHistory = _cartService.OrderHistory(userid);
+                if (ordHistory == null)
+                {
+                    return NotFound("There are no orders available!");
+                }
+                return Ok(ordHistory);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.CartController.OrderHistory() method!");
+                return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// places a new order from an existing user cart
+        /// </summary>
+        /// <param name="cartId">id of the cart to be ordered</param>
+        /// <returns>order, if successful</returns>
+        [HttpPost]
+        [ProducesDefaultResponseType]
+        public IActionResult PlaceOrder([FromQuery] int cartId)
+        {
+            try
+            {
+                var order = _cartService.PlaceOrder(cartId);
+                if (order == null)
+                {
+                    return NotFound("Order not specified!");
+                }
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.CartController.PlaceOrder() method!");
+                return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// removes a placed order within 1 hour after being ordered
+        /// </summary>
+        /// <param name="orderId">id of the order to be removed</param>
+        [HttpDelete]
+        [ProducesDefaultResponseType]
+        public IActionResult CancelOrder([FromQuery(Name = "orderId")] int orderId)
+        {
+            try
+            {
+                var order = _cartService.GetOrderById(orderId);
+                if (order != null)
+                {
+                    _cartService.CancelOrder(orderId);
+                    return Ok();
+                }
+                return NotFound("Order does not exist!");
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Exception in OnlineShop.Api.Controllers.CartController.CancelOrder() method!");
+                return NotFound();
+            }
+        }
     }
 }

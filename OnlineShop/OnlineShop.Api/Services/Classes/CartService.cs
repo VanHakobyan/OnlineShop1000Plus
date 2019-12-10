@@ -32,5 +32,25 @@ namespace OnlineShop.Api.Services.Classes
         {
             return _cartManagementBLL.IsInCart(userId, itemId);
         }
+
+        public Orders PlaceOrder(int cartId)
+        {
+            return _cartManagementBLL.PlaceOrder(cartId);
+        }
+
+        public void CancelOrder(int orderId)
+        {
+            _cartManagementBLL.CancelOrder(orderId);
+        }
+
+        public IEnumerable<Orders> OrderHistory(int userId)
+        {
+            return _cartManagementBLL.OrderHistory(userId);
+        }
+
+        public Orders GetOrderById(int orderId)
+        {
+            return _cartManagementBLL.GetOrderById(orderId);
+        }
     }
 }

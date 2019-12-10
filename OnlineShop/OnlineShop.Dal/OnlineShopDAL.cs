@@ -22,9 +22,6 @@ namespace OnlineShop.Dal
         private IProductManagementDAL _productManagementDAL;
         public IProductManagementDAL ProductManagementDAL => _productManagementDAL ?? (_productManagementDAL = new ProductManagementDAL(DbContext));
 
-        private IOrdersManagementDAL _ordersManagementDAL;
-        public IOrdersManagementDAL OrdersManagementDAL => _ordersManagementDAL ?? (_ordersManagementDAL = new OrdersManagementDAL(DbContext));
-
         private IItemsManagementDAL _itemsManagementDAL;
         public IItemsManagementDAL ItemsManagementDAL => _itemsManagementDAL ?? (_itemsManagementDAL = new ItemsManagementDAL(DbContext));
 

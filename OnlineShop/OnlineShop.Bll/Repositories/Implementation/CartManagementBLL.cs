@@ -35,5 +35,30 @@ namespace OnlineShop.Bll.Repositories.Implementation
         {
             return _onlineShopDAL.CartManagementDAL.IsInCart(userId, itemId);
         }
+
+        public Orders PlaceOrder(int cartId)
+        {
+            return _onlineShopDAL.CartManagementDAL.PlaceOrder(cartId);
+        }
+
+        public void CancelOrder(int orderId)
+        {
+            var order = _onlineShopDAL.CartManagementDAL.GetOrderById(orderId);
+            TimeSpan span = (TimeSpan)(DateTime.Now - order.Date);
+            if (span.Hours < 1)
+            {
+                _onlineShopDAL.CartManagementDAL.CancelOrder(orderId);
+            }
+        }
+
+        public IEnumerable<Orders> OrderHistory(int userId)
+        {
+            return _onlineShopDAL.CartManagementDAL.OrderHistory(userId);
+        }
+
+        public Orders GetOrderById(int orderId)
+        {
+            return _onlineShopDAL.CartManagementDAL.GetOrderById(orderId);
+        }
     }
 }

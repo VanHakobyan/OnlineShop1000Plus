@@ -11,5 +11,9 @@ namespace OnlineShop.Bll.Repositories.Interfaces
         IEnumerable<Cart> AddItemToCart(int userId, int itemId);
         IEnumerable<Cart> RemoveItemFromCart(int userId, int itemId);
         bool IsInCart(int userId, int itemId);
+        Orders PlaceOrder(int cartId);
+        void CancelOrder(int orderId);
+        IEnumerable<Orders> OrderHistory(int userId);
+        Orders GetOrderById(int orderId);
     }
 }

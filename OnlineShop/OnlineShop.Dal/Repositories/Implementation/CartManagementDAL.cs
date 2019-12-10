@@ -45,5 +45,37 @@ namespace OnlineShop.Dal.Repositories.Implementation
             }
             else return false;
         }
+
+        public Orders PlaceOrder(int cartId)
+        {
+            var cart = DbContext.Cart.Find(cartId);
+            var order = new Orders { UserId = cart.UserId, Date = DateTime.Now};
+            DbContext.Orders.Add(order);
+            DbContext.SaveChanges();
+            IEnumerable<Cart> userCart = DbContext.Cart.Where(x => x.UserId == cart.UserId).AsEnumerable();
+            foreach (var item in userCart)
+            {
+                DbContext.ItemsOrders.Add(new ItemsOrders { OrderId = order.Id, ItemId = (int)item.ItemId });
+            }
+            DbContext.SaveChanges();
+            return order;
+        }
+
+        public void CancelOrder(int orderID)
+        {
+            var order = DbContext.Orders.Find(orderID);
+            DbContext.Orders.Remove(order);
+            DbContext.SaveChanges();
+        }
+
+        public IEnumerable<Orders> OrderHistory(int userId)
+        {
+            return DbContext.Orders.Where(x => x.UserId == userId).AsEnumerable();
+        }
+
+        public Orders GetOrderById(int id)
+        {
+            return DbContext.Orders.Find(id);
+        }
     }
 }
