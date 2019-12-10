@@ -33,5 +33,8 @@ namespace OnlineShop.Dal
 
         private ICategoryManagementDAL _categoryManagementDAL;
         public ICategoryManagementDAL categoryManagementDAL => _categoryManagementDAL ?? (_categoryManagementDAL = new CategoryManagementDAL(DbContext));
+
+        private ICartManagementDAL _cartManagementDAL;
+        public ICartManagementDAL CartManagementDAL => _cartManagementDAL ?? (_cartManagementDAL = new CartManagementDAL(DbContext));
     }
 }
