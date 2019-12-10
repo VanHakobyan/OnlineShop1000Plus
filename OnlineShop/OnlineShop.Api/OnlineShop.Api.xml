@@ -27,6 +27,26 @@
             <param name="itemId">id of the item to be removed</param>
             <returns>resulted cart</returns>
         </member>
+        <member name="M:OnlineShop.Api.Controllers.CartController.OrderHistory(System.Int32)">
+            <summary>
+            shows order history of the user
+            </summary>
+            <param name="userid">id of the user</param>
+            <returns>order history, if available</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CartController.PlaceOrder(System.Int32)">
+            <summary>
+            places a new order from an existing user cart
+            </summary>
+            <param name="cartId">id of the cart to be ordered</param>
+            <returns>order, if successful</returns>
+        </member>
+        <member name="M:OnlineShop.Api.Controllers.CartController.CancelOrder(System.Int32)">
+            <summary>
+            removes a placed order within 1 hour after being ordered
+            </summary>
+            <param name="orderId">id of the order to be removed</param>
+        </member>
         <member name="M:OnlineShop.Api.Controllers.CategoryController.Categories(System.Int32,System.Int32)">
             <summary>
             gets all categories
