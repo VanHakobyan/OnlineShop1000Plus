@@ -67,8 +67,8 @@ namespace OnlineShop.Api.Controllers
         /// sample request (this request registers new user)\
         /// POST  /users/register\
         /// {\
-        ///     "Email" : "sampleEmail",\
         ///     "Username" : "sampleUsername",\
+        ///     "Email" : "sampleEmail",\
         ///     "FirstName" : "sampleFirstName",\
         ///     "LastName" : "sampleLastName",\
         ///     "Password" : "samplePassword",\
@@ -87,7 +87,7 @@ namespace OnlineShop.Api.Controllers
                 {
                     return BadRequest("User not specified!");
                 }
-                else if (EmailValidation.IsValidEmail(user.Email))
+                else if (!EmailValidation.IsValidEmail(user.Email))
                 {
                     return BadRequest("Email not valid!");
                 }
