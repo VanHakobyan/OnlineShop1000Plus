@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace OnlineShop.Common
 {
    /// <summary>
@@ -11,6 +10,7 @@ namespace OnlineShop.Common
     {
         public Items()
         {
+            Cart = new HashSet<Cart>();
             ItemsOrders = new HashSet<ItemsOrders>();
         }
 
@@ -23,6 +23,7 @@ namespace OnlineShop.Common
         public string Image { get; set; }
 
         public virtual Products Product { get; set; }
+        public virtual ICollection<Cart> Cart { get; set; }
         public virtual ICollection<ItemsOrders> ItemsOrders { get; set; }
     }
 }

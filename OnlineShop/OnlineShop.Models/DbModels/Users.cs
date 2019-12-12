@@ -11,6 +11,7 @@ namespace OnlineShop.Common
     {
         public Users()
         {
+            Cart = new HashSet<Cart>();
             Orders = new HashSet<Orders>();
         }
         [Key]
@@ -38,6 +39,7 @@ namespace OnlineShop.Common
         public string Token { get; set; }
 
         public virtual Addresses Address { get; set; }
+        public virtual ICollection<Cart> Cart { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
     }
 }

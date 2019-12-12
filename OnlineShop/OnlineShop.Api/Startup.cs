@@ -70,11 +70,13 @@ namespace OnlineShop.Api
             services.AddScoped<IItemsService, ItemsService>();
             services.AddScoped<IProductsService, ProductsService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddSingleton<IUserManagementBLL, UserManagementBLL>();
             services.AddSingleton<IAddressManagementBLL, AddressManagementBLL>();
             services.AddSingleton<IItemsManagementBLL, ItemsManagementBLL>();
             services.AddSingleton<IProductManagementBLL, ProductManagementBLL>();
             services.AddSingleton<ICategoryManagementBLL, CategoryManagementBLL>();
+            services.AddSingleton<ICartManagementBLL, CartManagementBLL>();
 
             services.AddCors(o => o.AddPolicy("FrontPolicy", builder =>
             {

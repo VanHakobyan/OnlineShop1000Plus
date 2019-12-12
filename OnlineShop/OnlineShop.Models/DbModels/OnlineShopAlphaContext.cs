@@ -9,6 +9,7 @@ namespace OnlineShop.Common
             : base(options) { }
 
         public virtual DbSet<Addresses> Addresses { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Items> Items { get; set; }
         public virtual DbSet<ItemsOrders> ItemsOrders { get; set; }
@@ -62,6 +63,19 @@ namespace OnlineShop.Common
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.HasOne(d => d.Item)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.ItemId)
+                    .HasConstraintName("FK__Cart__ItemId__4BAC3F29");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK__Cart__UserId__4AB81AF0");
             });
 
             modelBuilder.Entity<Categories>(entity =>

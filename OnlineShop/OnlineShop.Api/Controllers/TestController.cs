@@ -48,7 +48,5 @@ namespace OnlineShop.Api.Controllers
         {
             return Ok($"Test {DateTime.UtcNow}");
         }
-
-
     }
 }
