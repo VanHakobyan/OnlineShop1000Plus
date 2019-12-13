@@ -146,10 +146,6 @@ namespace OnlineShop.Api
                 .WriteTo.Seq(serverUrl: ConfigurationRoot.GetValue<string>("SeqServerUrl"), LogEventLevel.Verbose)
                 .CreateLogger();
 
-            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
-
-            Log.Logger.Information(host.AddressList.FirstOrDefault(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString());
-
         }
     }
 }
