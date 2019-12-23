@@ -143,7 +143,6 @@ namespace OnlineShop.Api
                 .WriteTo.RollingFile($"{Environment.CurrentDirectory}\\Log\\{DateTime.Today.Year}\\Log.log", LogEventLevel.Verbose)
                 .WriteTo.Seq(serverUrl: ConfigurationRoot.GetValue<string>("SeqServerUrl"), LogEventLevel.Verbose)
                 .CreateLogger();
-
         }
     }
 }
