@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 using OnlineShop.Dal.Repositories.Interfaces;
 using OnlineShop.Dal.Repositories.Implementation;
 
@@ -14,7 +15,7 @@ namespace OnlineShop.Dal
         {
             _options = options;
         }
-        private OnlineShopAlphaContext DbContext => _dbContext ?? (_dbContext = new OnlineShopAlphaContext(_options));
+        private OnlineShopAlphaContext DbContext => _dbContext ??= new OnlineShopAlphaContext(_options); //null-coalescing C# 8.0
 
         private IUserManagementDAL _userManagementDAL;
         public IUserManagementDAL UserManagementDAL => _userManagementDAL ?? (_userManagementDAL = new UserManagementDAL(DbContext));

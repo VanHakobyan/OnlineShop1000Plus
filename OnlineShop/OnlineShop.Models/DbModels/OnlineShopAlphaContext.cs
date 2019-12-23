@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace OnlineShop.Common
+namespace OnlineShop.Common.DbModels
 {
     public partial class OnlineShopAlphaContext : DbContext
     {

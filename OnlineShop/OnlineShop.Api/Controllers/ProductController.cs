@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Common;
 using OnlineShop.Api.Services.Interfaces;
+using OnlineShop.Common.DbModels;
 using Serilog;
 
 namespace OnlineShop.Api.Controllers

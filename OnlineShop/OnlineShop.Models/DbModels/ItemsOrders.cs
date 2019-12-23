@@ -1,4 +1,4 @@
-﻿namespace OnlineShop.Common
+﻿namespace OnlineShop.Common.DbModels
 {
     /// <summary>
     /// cross table for item-order relations

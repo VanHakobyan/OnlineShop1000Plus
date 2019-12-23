@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShop.Common
+namespace OnlineShop.Common.DbModels
 {
     /// <summary>
     /// to summorize an order's details

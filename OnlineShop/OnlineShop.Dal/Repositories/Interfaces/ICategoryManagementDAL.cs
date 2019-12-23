@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Dal.Repositories.Interfaces
 {

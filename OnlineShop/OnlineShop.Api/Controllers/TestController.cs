@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Api.Controllers
 {

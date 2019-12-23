@@ -7,8 +7,8 @@ using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using OnlineShop.Common;
 using OnlineShop.Bll.Repositories.Interfaces;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Api.Services.Classes
 {

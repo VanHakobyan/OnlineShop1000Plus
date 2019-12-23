@@ -62,7 +62,7 @@
             <param name="id">id of the category</param>
             <returns>the category, if exists</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.CategoryController.AddCategory(OnlineShop.Common.Categories)">
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.AddCategory(OnlineShop.Common.DbModels.Categories)">
              <summary>
              adds a category
              </summary>
@@ -76,7 +76,7 @@
              </remarks>>
              <returns>added category</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.CategoryController.UpdateCategory(OnlineShop.Common.Categories,System.Int32)">
+        <member name="M:OnlineShop.Api.Controllers.CategoryController.UpdateCategory(OnlineShop.Common.DbModels.Categories,System.Int32)">
              <summary>
              updates existing category
              </summary>
@@ -121,7 +121,7 @@
             <param name="id">id of the item</param>
             <returns>item, if exists</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ItemsController.CreateItem(OnlineShop.Common.Items)">
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.CreateItem(OnlineShop.Common.DbModels.Items)">
              <summary>
              adds a new item
              </summary>
@@ -138,7 +138,7 @@
              </remarks>
              <returns>created item</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ItemsController.EditItem(OnlineShop.Common.Items,System.Int32)">
+        <member name="M:OnlineShop.Api.Controllers.ItemsController.EditItem(OnlineShop.Common.DbModels.Items,System.Int32)">
              <summary>
              updates item info
              </summary>
@@ -188,7 +188,7 @@
             <param name="id">id of the product</param>
             <returns>the produxt, if exists</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ProductController.AddProduct(OnlineShop.Common.Products)">
+        <member name="M:OnlineShop.Api.Controllers.ProductController.AddProduct(OnlineShop.Common.DbModels.Products)">
              <summary>
              adds new product
              </summary>
@@ -205,7 +205,7 @@
              </remarks>>
              <returns>new product</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.ProductController.EditProduct(OnlineShop.Common.Products,System.Int32)">
+        <member name="M:OnlineShop.Api.Controllers.ProductController.EditProduct(OnlineShop.Common.DbModels.Products,System.Int32)">
              <summary>
              updated the product
              </summary>
@@ -228,7 +228,7 @@
             </summary>
             <param name="id">product id</param>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.UsersController.Login(OnlineShop.Common.AuthenticateModel)">
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Login(OnlineShop.Common.AuthModels.AuthenticateModel)">
              <summary>
              logs in a registered user
              </summary>
@@ -244,7 +244,7 @@
             }
              </remarks>>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.UsersController.Register(OnlineShop.Common.AuthorizeModel)">
+        <member name="M:OnlineShop.Api.Controllers.UsersController.Register(OnlineShop.Common.AuthModels.AuthorizeModel)">
              <summary>
              registers new user
              </summary>
@@ -279,7 +279,7 @@
             <param name="username">the username to search by</param>
             <returns>the user with the given username</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.UsersController.AddAddress(OnlineShop.Common.Addresses)">
+        <member name="M:OnlineShop.Api.Controllers.UsersController.AddAddress(OnlineShop.Common.DbModels.Addresses)">
              <summary>
              adds an address for a registered user
              </summary>
@@ -305,7 +305,7 @@
             <param name="id">address Id</param>
             <returns>address if found</returns>
         </member>
-        <member name="M:OnlineShop.Api.Controllers.UsersController.UpdateAddress(System.Int32,OnlineShop.Common.Addresses)">
+        <member name="M:OnlineShop.Api.Controllers.UsersController.UpdateAddress(System.Int32,OnlineShop.Common.DbModels.Addresses)">
              <summary>
              updates existing address
              </summary>
@@ -313,7 +313,7 @@
              <param name="address">model for update info</param>
              <remarks>
              sample request (this request adds new address)\
-             PUT  /users/updateaddress\
+             PUT  /users/updateAddress\
              {\
                  "Country" : "sampleCountry",\
                  "State" : "sampleState",\
@@ -332,7 +332,7 @@
         </member>
         <member name="M:OnlineShop.Api.Controllers.UsersController.UpdateUserByAddress(System.Int32,System.Int32)">
             <summary>
-            attched address to an existing user
+            attached address to an existing user
             </summary>
             <param name="addressId">id of the address to be attached</param>
             <param name="userId">id of the user of the address</param>

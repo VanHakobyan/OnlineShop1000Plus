@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OnlineShop.Common
+﻿namespace OnlineShop.Common.DbModels
 {
     /// <summary>
     /// all the items in the cart per user

@@ -15,11 +15,9 @@ using OnlineShop.Api.Services.Classes;
 using OnlineShop.Api.Helpers;
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Bll.Repositories.Implementation;
-using OnlineShop.Common;
 using Serilog;
 using Serilog.Events;
-using System.Net;
-using System.Linq;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Api
 {

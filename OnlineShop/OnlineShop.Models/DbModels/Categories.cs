@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShop.Common
+namespace OnlineShop.Common.DbModels
 {
     /// <summary>
     /// to specify a category for a group of products

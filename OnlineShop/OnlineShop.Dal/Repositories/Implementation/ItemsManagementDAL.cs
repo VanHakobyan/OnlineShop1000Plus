@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Dal.Repositories.Implementation
@@ -58,8 +59,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
 
         public bool SearchById(int id)
         {
-            if(DbContext.Items.Any(x => x.Id == id)) return true;
-            return false;
+            return DbContext.Items.Any(x => x.Id == id);
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Dal.Repositories.Interfaces
 {
@@ -12,7 +11,7 @@ namespace OnlineShop.Dal.Repositories.Interfaces
         IEnumerable<Cart> RemoveItemFromCart(int userId, int itemId);
         bool IsInCart(int userId, int itemId);
         Orders PlaceOrder(int cartId);
-        void CancelOrder(int orderID);
+        void CancelOrder(int orderId);
         IEnumerable<Orders> OrderHistory(int userId);
         Orders GetOrderById(int id);
     }

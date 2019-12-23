@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Bll.Repositories.Interfaces;
-using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 using OnlineShop.Dal;
 
 namespace OnlineShop.Bll.Repositories.Implementation

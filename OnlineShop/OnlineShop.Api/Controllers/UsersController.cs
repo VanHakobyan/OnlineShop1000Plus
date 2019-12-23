@@ -1,10 +1,11 @@
-﻿ using System;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using OnlineShop.Api.Services.Interfaces;
-using OnlineShop.Common;
 using System.Collections.Generic;
 using OnlineShop.Api.Helpers;
+using OnlineShop.Common.AuthModels;
+using OnlineShop.Common.DbModels;
 using Serilog;
 
 namespace OnlineShop.Api.Controllers
@@ -44,7 +45,7 @@ namespace OnlineShop.Api.Controllers
                 {
                     return BadRequest("Email and/or password missing!");
                 }
-                else if (!EmailValidation.IsValidEmail(user.Email))
+                if (!EmailValidation.IsValidEmail(user.Email))
                 {
                     return BadRequest("Email not valid!");
                 }
@@ -224,7 +225,7 @@ namespace OnlineShop.Api.Controllers
         /// <param name="address">model for update info</param>
         /// <remarks>
         /// sample request (this request adds new address)\
-        /// PUT  /users/updateaddress\
+        /// PUT  /users/updateAddress\
         /// {\
         ///     "Country" : "sampleCountry",\
         ///     "State" : "sampleState",\
@@ -245,7 +246,7 @@ namespace OnlineShop.Api.Controllers
                 {
                     return BadRequest("Address not found!");
                 }
-                else if (address == null)
+                if (address == null)
                 {
                     return BadRequest("Update info missing!");
                 }
@@ -292,7 +293,7 @@ namespace OnlineShop.Api.Controllers
 
 
         /// <summary>
-        /// attched address to an existing user
+        /// attached address to an existing user
         /// </summary>
         /// <param name="addressId">id of the address to be attached</param>
         /// <param name="userId">id of the user of the address</param>

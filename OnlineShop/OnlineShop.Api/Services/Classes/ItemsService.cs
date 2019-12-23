@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using OnlineShop.Common;
 using OnlineShop.Bll.Repositories.Interfaces;
 using OnlineShop.Api.Services.Interfaces;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Api.Services.Classes
 {

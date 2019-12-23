@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OnlineShop.Common.DbModels;
 using OnlineShop.Common.ResponseModels;
 
 namespace OnlineShop.Common.Factories

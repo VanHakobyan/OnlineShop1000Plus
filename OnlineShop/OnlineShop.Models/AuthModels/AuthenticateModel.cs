@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShop.Common
+namespace OnlineShop.Common.AuthModels
 {
     /// <summary>
     /// login with email and password

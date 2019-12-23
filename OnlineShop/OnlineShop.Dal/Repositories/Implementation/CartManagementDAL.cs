@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Dal.Repositories.Implementation
@@ -30,7 +30,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
         public IEnumerable<Cart> RemoveItemFromCart(int userId, int itemId)
         {
             var oldCartItem = DbContext.Cart.FirstOrDefault(x => x.ItemId == itemId & x.UserId == userId);
-            DbContext.Cart.Remove(oldCartItem);
+            DbContext.Cart.Remove(oldCartItem ?? throw new InvalidOperationException());
             var item = DbContext.Items.Find(itemId);
             item.Quantity++;
             DbContext.SaveChanges();
@@ -39,11 +39,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
 
         public bool IsInCart(int userId, int itemId)
         {
-            if (DbContext.Cart.Any(x => x.UserId == userId & x.ItemId == itemId))
-            {
-                return true;
-            }
-            else return false;
+            return DbContext.Cart.Any(x => x.UserId == userId & x.ItemId == itemId);
         }
 
         public Orders PlaceOrder(int cartId)
@@ -55,15 +51,16 @@ namespace OnlineShop.Dal.Repositories.Implementation
             IEnumerable<Cart> userCart = DbContext.Cart.Where(x => x.UserId == cart.UserId).AsEnumerable();
             foreach (var item in userCart)
             {
-                DbContext.ItemsOrders.Add(new ItemsOrders { OrderId = order.Id, ItemId = (int)item.ItemId });
+                if (item.ItemId != null)
+                    DbContext.ItemsOrders.Add(new ItemsOrders {OrderId = order.Id, ItemId = (int) item.ItemId});
             }
             DbContext.SaveChanges();
             return order;
         }
 
-        public void CancelOrder(int orderID)
+        public void CancelOrder(int orderId)
         {
-            var order = DbContext.Orders.Find(orderID);
+            var order = DbContext.Orders.Find(orderId);
             DbContext.Orders.Remove(order);
             DbContext.SaveChanges();
         }

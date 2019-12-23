@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using OnlineShop.Common;
+using OnlineShop.Common.DbModels;
 using OnlineShop.Dal.Repositories.Interfaces;
 
 namespace OnlineShop.Dal.Repositories.Implementation
@@ -9,14 +10,12 @@ namespace OnlineShop.Dal.Repositories.Implementation
     {
         public UserManagementDAL(OnlineShopAlphaContext dbContext) : base(dbContext) { }
 
-        //Create
         public void AddUser(Users user)
         {
             DbContext.Users.Add(user);
             DbContext.SaveChanges();
         }
 
-        //Read
         public IEnumerable<Users> AllUsers => DbContext.Users.AsEnumerable();
         public IEnumerable<Users> GetAllUsersByPage(int count, int page)
         {
@@ -37,8 +36,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
 
         public bool SearchForEmail(string email)
         {
-            if (DbContext.Users.Any(x => x.Email == email)) return true;
-            return false;
+            return DbContext.Users.Any(x => x.Email == email);
         }
 
         public bool SearchForUsername(string username)
@@ -47,14 +45,12 @@ namespace OnlineShop.Dal.Repositories.Implementation
             return false;
         }
 
-        //Update
         public void UpdateUser(Users entity)
         {
             DbContext.Users.Update(entity);
             DbContext.SaveChanges();
         }
 
-        //Delete
         public void RemoveUser(Users user)
         {
             DbContext.Users.Remove(user);

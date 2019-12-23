@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using OnlineShop.Common;
+﻿using System.Collections.Generic;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Api.Services.Interfaces
 {

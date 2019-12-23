@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShop.Common
+namespace OnlineShop.Common.DbModels
 {
     /// <summary>
     /// to add a new address for a registered user

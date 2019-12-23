@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Common;
 using System.Collections.Generic;
+using OnlineShop.Common.DbModels;
 
 namespace OnlineShop.Dal.Repositories.Interfaces
 {

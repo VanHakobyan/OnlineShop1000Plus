@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel.DataAnnotations;
-
-namespace OnlineShop.Common.ResponseModels
+﻿namespace OnlineShop.Common.ResponseModels
 {
     public class Product
     {
