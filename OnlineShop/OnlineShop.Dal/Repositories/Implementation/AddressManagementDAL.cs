@@ -8,8 +8,7 @@ namespace OnlineShop.Dal.Repositories.Implementation
 {
     public class AddressManagementDAL : BaseDAL, IAddressManagementDAL
     {
-        public AddressManagementDAL(OnlineShopAlphaContext context) 
-            : base(context) { }
+        public AddressManagementDAL(OnlineShopAlphaContext context) : base(context) { }
 
         public IEnumerable<Addresses> AllAddresses => base.DbContext.Addresses.AsEnumerable();
 
